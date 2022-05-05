@@ -1,196 +1,200 @@
-<!DOCTYPE html>
-<html lang="zh">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
-     <link rel="shortcut icon" href= /img/favicon.ico >
-    <title>
-        Hexo
-    </title>
-    <meta name="description" content= A Blog for the musings and sometimes technical schenanigans of Icharuss Grym >
-    <meta name="keywords" content= Blog,Hexo,DevOps, Icharuss Grym, Icharuss, Grym, Tech Blog >
-    
-<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="author" content="Icharuss Grym">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+  
+  <meta property="og:site_name" content="Hexo"/>
 
-    
-<link rel="stylesheet" href="/css/style.css">
+  
+    <meta property="og:image" content=""/>
+  
 
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    $('#sidebar').delay(400).animate({ width: '285px' }, 500, function() {
+      $('.personal-info').css({display: 'table'}).hide().fadeIn(500);
+    });
+  });
+  </script>
+  
 <meta name="generator" content="Hexo 6.1.0"></head>
-<body id="bodyx">
-    <div class="hd logodiv">
-    <img src="/img/Grym.png" class="logopng" alt="logo">
-    <p class="logot">
-         Icharuss Grym 
-         <span class="logo_2"></span>
-        <h3 class="words" style="font-weight: bold;font-family: Georgia;"> 
-            Your Words 
-        </h3>
-    </p>
+
+
+<body>
+  <header id="header" class="inner"><!-- <div class="alignleft">
+  <h1><a href="/">Hexo</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+ --><!-- <nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+ --></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignright"><div id="wrapper">
+  <!-- <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon depth"></div>
+        <time class="depth" datetime="2022-05-05T04:48:59.106Z"><a href="/2022/05/05/hello-world/">2022-05-05</a></time>
+      
+      
+  
+    <h1 class="title depth"><a href="/2022/05/05/hello-world/">Hello World</a></h1>
+  
+
+    </header>
+    <div class="entry depth">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+ -->
+
+  
+  <div class="archive">
+    
+    <article class="post">
+      <div class="post-content">
+        <header>
+            
+              <a href="/2022/05/05/hello-world/"><div class="icon depth"></div> </a>
+              <h2 class="depth title" ><a href="/2022/05/05/hello-world/">Hello World</a></h2>
+            
+            <time class="time title depth" datetime="2022-05-05T04:48:59.106Z"><a href="/2022/05/05/hello-world/">2022-05-05</a></time>
+          </header>
+      </div>
+    </article>
+  </div>
+  
+
+
+<nav id="pagination">
+  
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignleft"><!-- 
+  
+
+  
+
+  
+<div class="widget twitter">
+  <h3 class="title">推文</h3>
+  <ul id="tweets"></ul>
 </div>
 
+<script type="text/javascript">
+var twitter_stream = ['IcharussGrym', 5, false];
+var moment_js_path = '/js/moment.min.js';
+</script>
+<script src="/js/twitter.js"></script>
 
-<div class="hd">
-    <ol class="breadcrumb">
-        
-            <li><a class="ba" href="/about">About👀</a></li>
-        
-            <li><a class="ba" target="_blank" rel="noopener" href="https://github.com/raunok87">GitHub🐒</a></li>
-        
 
-            
-<script src="/libs/jquery.min.js"></script>
-
-            
-<script src="/js/search.js"></script>
-
-            
-                <form class="site-search-form">
-                    <i class="fa fa-search" id="search-logo"><input type="text" id="local-search-input" class="st-search-input" /></i>
-                </form>
-                <div id="local-search-result" class="local-search-result-cls"></div>
-            
-            <script type="text/javascript" id="local.search.active">
-                var inputArea       = document.querySelector("#local-search-input");
-                var getSearchFile = function(){
-                    var path = "/search.xml";
-                    searchFunc(path, 'local-search-input', 'local-search-result');
-                }
-                inputArea.onfocus = function(){ getSearchFile() }
-
-                var $resetButton = $("#search-form .fa-times");
-                var $resultArea = $("#local-search-result");
-
-                inputArea.oninput = function(){ $resetButton.show(); }
-                resetSearch = function(){
-                    $resultArea.html("");
-                    document.querySelector("#search-form").reset();
-                    $resetButton.hide();
-                    $(".no-result").hide();
-                }
-                inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
-                //No search result
-                $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
-                    if (!$(e.target).text()) {
-                        $(".no-result").show(100);
-                    } else {
-                        $(".no-result").hide();
-                    }
-                })
-            </script>
-
-    </ol>
-    <hr>
+ -->
+<div class="personal-info">
+  <figure>
+    
+      <a href="/">
+        <img class="personal-photo" src="/img/Grym.png" alt="Icharuss Grym">
+      </a>
+    
+    <figcaption>
+      <h3 class=>Icharuss Grym</h3>
+      <p>Husband, father, nerd, gamer. DevOps/TechOps. #NeuroDivergent. I break Kubernetes, write bad Go and bust Postgres.</p>
+    </figcaption>
+  </figure>
+  <section class="social">
+    
+      <a target="_blank" class="icon twitter depth" href="http://twitter.com/IcharussGrym"></a>
+    
+    
+    
+      <a target="_blank" class="icon github depth" href="http://github.com/raunok87"></a>
+    
+    
+      <a target="_blank" class="icon email depth" href="mailto:icharuss@grym.tech"></a>
+    
+  </section>
 </div>
-<div class="hd">
-    
-    
-        
-        
-            <div class="titlex">
-                <p><span class="jing"></span><span style="color: #6d9ee7;"> 公元</span> 
-                 2022年 🕛
-                </p>
-            </div>
-            
-        
-        <a class="flink" href="/2022/05/05/hello-world/">
-            <div class="list">
-                <div class="postname">
-                    Hello World
-                </div>
-                <div class="posttime">
-                    May 5th
-                </div>
-            </div>
-        </a>
-    
-        
-        
-        <a class="flink" href="/2022/05/05/404/">
-            <div class="list">
-                <div class="postname">
-                    404
-                </div>
-                <div class="posttime">
-                    May 5th
-                </div>
-            </div>
-        </a>
-    
-        
-        
-        <a class="flink" href="/2022/05/04/Hello-Blog/">
-            <div class="list">
-                <div class="postname">
-                    Hello Blog
-                </div>
-                <div class="posttime">
-                    May 4th
-                </div>
-            </div>
-        </a>
-    
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignright depth">
+  <a target="_blank" rel="noopener" href="http://github.com/thiagopnts/hexo-persona-dark" style="text-decoration: underline;">Persona Dark Theme</a> 
+  &copy; - 2022 Icharuss Grym
+  
 </div>
-
-    <div class="footer" id="footer">
-    <p><h4>Copyright © 2020 | Author: Icharuss | Theme By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
-    
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv">Page Views: <span id="busuanzi_value_site_pv"></span></span>
-        <span class="post-meta-divider">|</span>
-        <span id="busuanzi_container_site_uv">Unique Visitors: <span id="busuanzi_value_site_uv"></span></span>
-    
-    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
-        <input type="checkbox" name="switch" id="update_style">
-        <span class="el-switch-style"></span>
-    </label>
-
-    <!--         <script type="text/javascript">
-    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
-    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-    </script> -->
-</p>
-</div>
-
-<input type="hidden" id="web_style" value="black">
-<input type="hidden" id="valine_appid" value="">
-<input type="hidden" id="valine_appKey" value="">
-
-<script src="/libs/jquery.min.js"></script>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
 
 
-<script src="/libs/highlight/highlight.pack.js"></script>
 
-<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
 
-<script src="/js/js.js"></script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
 
-<style type="text/css">
-.v * {
-color: #698fca;
-}
-.v .vlist .vcard .vhead .vsys {
-color: #3a3e4a;
-}
-.v .vlist .vcard .vh .vmeta .vat {
-color: #638fd5;
-}
-.v .vlist .vcard .vhead .vnick {
-color: #6ba1ff;
-}
-.v a {
-color: #8696b1;
-}
-.v .vlist .vcard .vhead .vnick:hover {
-color: #669bfc;
-}
-</style>
-    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
 </html>
