@@ -83,7 +83,7 @@ export const skillCategories: SkillCategory[] = [
     icon: '🏠',
     description: 'Production-grade infra, closet-grade budget',
     skills: [
-      { name: 'Proxmox' },
+      { name: 'TrueNAS' },
       { name: 'Ansible' },
       { name: 'Networking' },
       { name: 'ZFS' },
