@@ -64,11 +64,11 @@ export const projects: Project[] = [
       'Recurring cross-functional work enabling enterprise customer connectivity — VPN tunnels, static IP routing for cloud functions, and firewall rules for healthcare system integrations. Complex GCP networking at the boundary of trust.',
   },
   {
-    title: 'Reliability & Observability Sprint',
+    title: 'Reliability & Observability',
     category: 'Observability',
     accent: 'cyan',
     description:
-      'Led a dedicated sprint after production instability. Delivered full-stack monitoring, proactive alerting, deep cloud function observability, and identified unnecessary proxy traffic contributing to outages.',
+      'Led a dedicated effort to raise the bar on monitoring and observability across the stack. Delivered proactive alerting, deep cloud function instrumentation, and optimized traffic patterns to improve overall system resilience.',
   },
   {
     title: 'Credential Hygiene & Key Rotation',
