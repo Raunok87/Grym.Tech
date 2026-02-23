@@ -1,0 +1,36 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer-copy">
+      &copy; {year} Drew Davis. Built with
+      <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>.
+      Powered by caffeine and mass quantities of curiosity.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .footer-copy {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+
+  .footer-copy a {
+    color: var(--text-muted);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .footer-copy a:hover {
+    color: var(--accent-cyan);
+  }
+</style>
