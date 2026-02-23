@@ -1,0 +1,192 @@
+---
+import { projects } from '../data/projects';
+---
+
+<section class="work section" id="work">
+  <div class="container">
+    <h2 class="section-title reveal">The Work</h2>
+    <p class="section-subtitle reveal">// infrastructure, industrialized</p>
+
+    <p class="work-intro reveal">
+      Joined a healthcare AI company when the infrastructure was largely manual and ad-hoc.
+      Systematically built it into an automated, secure, observable platform — from VPN tunnels
+      to an internal developer portal.
+    </p>
+
+    <div class="timeline">
+      {projects.map((project, i) => (
+        <div
+          class={`timeline-entry reveal ${project.current ? 'is-current' : ''}`}
+          style={`--entry-accent: var(--accent-${project.accent}); --entry-accent-rgb: ${project.accent === 'cyan' ? '56, 189, 248' : '245, 158, 11'};`}
+        >
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-card glass-card">
+            <div class="timeline-header">
+              <span class="timeline-number mono">{String(i + 1).padStart(2, '0')}</span>
+              <div class="timeline-tags">
+                {project.current && <span class="timeline-active mono">active</span>}
+                <span class="timeline-category mono">{project.category}</span>
+              </div>
+            </div>
+            <h3 class="timeline-title">{project.title}</h3>
+            <p class="timeline-desc">{project.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .work-intro {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 3rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1.05rem;
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 840px;
+    margin: 0 auto;
+    padding-left: 40px;
+  }
+
+  /* Vertical line */
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 20px;
+    bottom: 20px;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      var(--accent-cyan),
+      var(--accent-amber) 50%,
+      var(--accent-cyan)
+    );
+    opacity: 0.25;
+  }
+
+  .timeline-entry {
+    position: relative;
+    margin-bottom: 1.25rem;
+  }
+
+  .timeline-entry:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Marker dot on the timeline */
+  .timeline-dot {
+    position: absolute;
+    left: -40px;
+    top: 22px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 2px solid var(--entry-accent);
+    transition: background var(--transition-base), box-shadow var(--transition-base);
+    z-index: 1;
+  }
+
+  .timeline-entry:hover .timeline-dot {
+    background: var(--entry-accent);
+    box-shadow: 0 0 12px rgba(var(--entry-accent-rgb), 0.5);
+  }
+
+  /* Current/active projects get a pulsing dot */
+  .is-current .timeline-dot {
+    background: var(--entry-accent);
+    box-shadow: 0 0 8px rgba(var(--entry-accent-rgb), 0.4);
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 8px rgba(var(--entry-accent-rgb), 0.4); }
+    50% { box-shadow: 0 0 16px rgba(var(--entry-accent-rgb), 0.7); }
+  }
+
+  .timeline-card {
+    /* glass-card base handles most styling */
+  }
+
+  .is-current .timeline-card {
+    border-color: rgba(var(--entry-accent-rgb), 0.3);
+  }
+
+  .timeline-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.625rem;
+  }
+
+  .timeline-number {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .timeline-tags {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .timeline-active {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #22c55e;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-category {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(var(--entry-accent-rgb), 0.08);
+    border: 1px solid rgba(var(--entry-accent-rgb), 0.25);
+    color: var(--entry-accent);
+  }
+
+  .timeline-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .timeline {
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      left: 4px;
+    }
+
+    .timeline-dot {
+      left: -28px;
+      width: 10px;
+      height: 10px;
+      top: 24px;
+    }
+
+    .timeline-card {
+      padding: 1.25rem;
+    }
+  }
+</style>
