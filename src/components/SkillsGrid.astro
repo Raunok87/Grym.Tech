@@ -1,0 +1,127 @@
+---
+import { skillCategories } from '../data/skills';
+---
+
+<section class="skills section" id="skills">
+  <div class="container">
+    <h2 class="section-title reveal">What I Work With</h2>
+    <p class="section-subtitle reveal">// the toolkit, abridged</p>
+
+    <div class="skills-grid reveal-stagger">
+      {skillCategories.map((category) => (
+        <div class="glass-card skill-card">
+          <span class="skill-icon" aria-hidden="true">{category.icon}</span>
+          <h3 class="skill-card-title">{category.title}</h3>
+          <p class="skill-card-desc">{category.description}</p>
+          <div class="skill-pills">
+            {category.skills.map((skill) => (
+              <span
+                class="skill-pill"
+                data-tooltip={skill.tooltip || null}
+              >
+                {skill.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .skill-icon {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .skill-card-desc {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+  }
+
+  .skill-pill {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.625rem;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 999px;
+    color: var(--accent-cyan);
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+    position: relative;
+    cursor: default;
+  }
+
+  .skill-pill:hover {
+    background: rgba(56, 189, 248, 0.15);
+    border-color: var(--accent-cyan);
+  }
+
+  /* Tooltip */
+  .skill-pill[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 14, 23, 0.95);
+    border: 1px solid var(--accent-amber);
+    color: var(--accent-amber);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 0.375rem 0.625rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    z-index: 10;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .skill-pill[data-tooltip]:hover::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 2px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--accent-amber);
+    z-index: 10;
+  }
+
+  @media (max-width: 1024px) {
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

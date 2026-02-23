@@ -1,0 +1,88 @@
+---
+const vignettes = [
+  {
+    title: 'Real-time Networked Systems',
+    accent: 'var(--accent-cyan)',
+    body: `Building game servers taught me more about distributed systems than any textbook. When you need state synchronization across dozens of clients at 60Hz, you learn to think about consistency, latency budgets, and graceful degradation in ways that translate directly to production platform work.`,
+  },
+  {
+    title: 'AI at the Edge',
+    accent: 'var(--accent-amber)',
+    body: `Running computer vision models and LLM inference on local GPUs means understanding the full stack—from CUDA memory management to model optimization to serving infrastructure. These patterns map cleanly to building ML platforms at scale.`,
+  },
+  {
+    title: 'Systems from Scratch',
+    accent: 'var(--accent-cyan)',
+    body: `Writing in Rust and Go for fun builds the kind of intuition that makes you dangerous in a production debugging session. When you've fought the borrow checker and hand-managed goroutine lifecycles, reasoning about memory leaks and race conditions in production becomes second nature.`,
+  },
+  {
+    title: 'The Homelab',
+    accent: 'var(--accent-amber)',
+    body: `A self-hosted infrastructure rack is a low-stakes production environment. Proxmox clusters, ZFS storage, network segmentation, monitoring stacks—it's the same discipline as cloud platform engineering, just with more trips to the closet.`,
+  },
+];
+---
+
+<section class="beyond section" id="beyond">
+  <div class="container">
+    <h2 class="section-title reveal">Beyond the Day Job</h2>
+    <p class="section-subtitle reveal">// where curiosity meets compilers</p>
+
+    <div class="vignettes">
+      {vignettes.map((v, i) => (
+        <div class={`vignette-card reveal ${i % 2 !== 0 ? 'vignette-offset' : ''}`} style={`--accent: ${v.accent};`}>
+          <h3 class="vignette-title">{v.title}</h3>
+          <p class="vignette-body">{v.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .vignettes {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .vignette-card {
+    padding: 1.75rem 2rem;
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    border-radius: 0 12px 12px 0;
+    transition: border-color var(--transition-base), background var(--transition-base);
+  }
+
+  .vignette-card:hover {
+    background: var(--bg-card-hover);
+  }
+
+  .vignette-offset {
+    margin-left: 3rem;
+  }
+
+  .vignette-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .vignette-body {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 768px) {
+    .vignette-offset {
+      margin-left: 0;
+    }
+
+    .vignette-card {
+      padding: 1.25rem 1.5rem;
+    }
+  }
+</style>

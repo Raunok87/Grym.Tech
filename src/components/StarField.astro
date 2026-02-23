@@ -1,0 +1,79 @@
+---
+---
+
+<div class="starfield" aria-hidden="true">
+  <div class="stars stars-small"></div>
+  <div class="stars stars-medium"></div>
+  <div class="stars stars-large"></div>
+</div>
+
+<style>
+  .starfield {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background: var(--bg-primary);
+  }
+
+  .stars {
+    position: absolute;
+    inset: 0;
+    background-repeat: repeat;
+    animation: drift linear infinite;
+  }
+
+  .stars-small {
+    background-image:
+      radial-gradient(1px 1px at 50px 120px, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1px 1px at 180px 300px, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1px 1px at 320px 80px, rgba(255,255,255,0.35), transparent),
+      radial-gradient(1px 1px at 450px 220px, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1px 1px at 100px 400px, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1px 1px at 550px 350px, rgba(255,255,255,0.25), transparent),
+      radial-gradient(1px 1px at 700px 150px, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1px 1px at 250px 500px, rgba(255,255,255,0.35), transparent),
+      radial-gradient(1px 1px at 800px 420px, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1px 1px at 650px 50px, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1px 1px at 400px 600px, rgba(255,255,255,0.25), transparent),
+      radial-gradient(1px 1px at 150px 650px, rgba(255,255,255,0.3), transparent);
+    background-size: 900px 750px;
+    animation-duration: 120s;
+  }
+
+  .stars-medium {
+    background-image:
+      radial-gradient(1.5px 1.5px at 200px 250px, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 500px 100px, rgba(255,255,255,0.45), transparent),
+      radial-gradient(1.5px 1.5px at 350px 450px, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 100px 550px, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 700px 300px, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 600px 500px, rgba(255,255,255,0.45), transparent),
+      radial-gradient(1.5px 1.5px at 50px 200px, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 450px 350px, rgba(255,255,255,0.5), transparent);
+    background-size: 800px 650px;
+    animation-duration: 180s;
+  }
+
+  .stars-large {
+    background-image:
+      radial-gradient(2px 2px at 300px 200px, rgba(56, 189, 248, 0.6), transparent),
+      radial-gradient(2px 2px at 600px 400px, rgba(255,255,255,0.6), transparent),
+      radial-gradient(2px 2px at 150px 500px, rgba(245, 158, 11, 0.4), transparent),
+      radial-gradient(2px 2px at 750px 100px, rgba(56, 189, 248, 0.5), transparent),
+      radial-gradient(2px 2px at 450px 550px, rgba(255,255,255,0.55), transparent);
+    background-size: 1000px 700px;
+    animation-duration: 240s;
+  }
+
+  @keyframes drift {
+    from { transform: translateY(0); }
+    to { transform: translateY(-750px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stars {
+      animation: none;
+    }
+  }
+</style>

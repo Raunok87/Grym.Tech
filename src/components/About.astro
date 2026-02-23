@@ -1,0 +1,147 @@
+---
+const terminalLines = [
+  '$ kubectl get nodes -o wide',
+  '$ terraform plan -out=platform.tfplan',
+  '$ helm upgrade --install platform ./charts',
+  '$ argocd app sync production',
+  '$ kubectl top pods -n platform',
+  '$ terraform apply -auto-approve',
+];
+---
+
+<section class="about section" id="about">
+  <div class="container">
+    <h2 class="section-title reveal">Building Platforms at Scale</h2>
+    <p class="section-subtitle reveal">// where infrastructure meets impact</p>
+
+    <div class="about-grid">
+      <div class="about-prose reveal">
+        <p>
+          I build the platforms that engineering teams ship on. At Abridge AI, I helped grow the
+          platform engineering organization from 1 to 25, standing up the cloud infrastructure,
+          Kubernetes clusters, and CI/CD pipelines that let a healthcare AI company move fast
+          without breaking compliance.
+        </p>
+        <p>
+          Over 12+ years, I've focused on the intersection of developer experience and production
+          reliability&mdash;designing systems where "it just works" is the result of a lot of
+          deliberate engineering underneath. Cloud-native architectures, infrastructure as code,
+          and a philosophy that the best platform is the one developers don't have to think about.
+        </p>
+        <p>
+          What sets me apart is the breadth behind the depth. The hobby-tech&mdash;game engines,
+          ML pipelines, systems programming&mdash;isn't a distraction. It's the reason I can
+          debug a kernel panic, reason about GPU memory, or intuit why a distributed system is
+          misbehaving. Curiosity is the cheat code.
+        </p>
+      </div>
+
+      <div class="about-terminal reveal">
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="terminal-dot" style="background: #ef4444;"></span>
+            <span class="terminal-dot" style="background: var(--accent-amber);"></span>
+            <span class="terminal-dot" style="background: #22c55e;"></span>
+            <span class="terminal-title mono">platform@grym:~</span>
+          </div>
+          <div class="terminal-body mono">
+            {terminalLines.map((line, i) => (
+              <div class="terminal-line" style={`animation-delay: ${i * 3}s;`}>
+                <span class="terminal-prompt">▶</span>
+                <span class="terminal-text">{line}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-prose p {
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+  }
+
+  .about-prose p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Terminal */
+  .terminal {
+    background: rgba(10, 14, 23, 0.9);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    overflow: hidden;
+    position: sticky;
+    top: 6rem;
+  }
+
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1rem;
+    background: rgba(15, 23, 42, 0.8);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .terminal-title {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .terminal-body {
+    padding: 1.25rem;
+    font-size: 0.8rem;
+    line-height: 2;
+    min-height: 280px;
+  }
+
+  .terminal-line {
+    opacity: 0;
+    animation: terminalType 3s ease forwards;
+    animation-iteration-count: 1;
+  }
+
+  .terminal-prompt {
+    color: var(--accent-amber);
+    margin-right: 0.5rem;
+  }
+
+  .terminal-text {
+    color: var(--text-secondary);
+  }
+
+  @keyframes terminalType {
+    0% { opacity: 0; transform: translateX(-4px); }
+    10% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .terminal {
+      position: static;
+    }
+  }
+</style>
