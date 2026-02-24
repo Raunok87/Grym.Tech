@@ -47,14 +47,14 @@ export const projects: Project[] = [
     category: 'Networking',
     accent: 'amber',
     description:
-      "Major redesign of network egress across all environments. Converted cloud functions, App Engine, and GKE workloads to static egress IPs via NAT gateways — addressing infrastructure that wasn't designed for the growth the company experienced.",
+      'Major redesign of network egress across all environments. Converted cloud functions, App Engine, and GKE workloads to static egress IPs via NAT gateways — modernizing the networking layer to support continued platform growth.',
   },
   {
     title: 'CloudSQL Security Hardening',
     category: 'Security',
     accent: 'cyan',
     description:
-      'Identified CloudSQL instances with public IPs and overly permissive access. Removed public endpoints, routed all traffic internally, and coordinated a production maintenance window to migrate every dependent service.',
+      'Tightened CloudSQL security posture by removing public endpoints, routing all traffic internally, and coordinating a production maintenance window to migrate every dependent service.',
   },
   {
     title: 'Customer Network Integrations',
@@ -68,7 +68,7 @@ export const projects: Project[] = [
     category: 'Observability',
     accent: 'cyan',
     description:
-      'Led a dedicated effort to raise the bar on monitoring and observability across the stack. Delivered proactive alerting, deep cloud function instrumentation, and optimized traffic patterns to improve overall system resilience.',
+      'Invested in monitoring and observability across the stack — proactive alerting, deep cloud function instrumentation, and optimized traffic patterns to strengthen the platform as it scaled.',
   },
   {
     title: 'Credential Hygiene & Key Rotation',
