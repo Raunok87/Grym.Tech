@@ -4,6 +4,7 @@ export interface Project {
   description: string;
   accent: 'cyan' | 'amber';
   current?: boolean;
+  featured?: boolean;
 }
 
 export const projects: Project[] = [
@@ -18,6 +19,7 @@ export const projects: Project[] = [
     title: 'Terraform Automation & IaC Pipeline',
     category: 'IaC',
     accent: 'amber',
+    featured: true,
     description:
       'Built the Terraform deployment pipeline from scratch across all environments. Evolved from basic runs into a fully automated infrastructure pipeline with drift detection, cost estimation, and AI-powered review.',
   },
@@ -25,6 +27,7 @@ export const projects: Project[] = [
     title: 'ML Inference Platform',
     category: 'ML Platform',
     accent: 'cyan',
+    featured: true,
     description:
       'Stood up private GKE clusters for Triton-based ML inference workloads. Built Terraform modules with proper networking, security groups, node pools, and service mesh. Took the first inference system from zero to production.',
   },
@@ -89,6 +92,7 @@ export const projects: Project[] = [
     category: 'Developer Experience',
     accent: 'amber',
     current: true,
+    featured: true,
     description:
       'Full-stack IDP with plugin architecture — Go/Fiber backend, React frontend. Centralized platform for infrastructure visibility, deployments, drift detection, audit logging, GitOps integration, and agent monitoring. Deployed behind IAP on Cloud Run.',
   },
@@ -97,6 +101,7 @@ export const projects: Project[] = [
     category: 'Leadership',
     accent: 'cyan',
     current: true,
+    featured: true,
     description:
       'Built and grew the platform engineering organization. Regular "State of the Platform" communications, engineering office hours, hands-on mentoring, and a culture of recognizing the team\'s contributions.',
   },
@@ -105,6 +110,7 @@ export const projects: Project[] = [
     category: 'AI / Agents',
     accent: 'amber',
     current: true,
+    featured: true,
     description:
       'Personal deployment of the NanoClaw AI agent framework, customised and branded as Grym. Runs on TrueNAS Scale as a systemd service. Routes inbound Discord messages to Claude agents executing in isolated Linux containers via the Claude Agent SDK. Each Discord group has its own CLAUDE.md memory file and per-group model configuration (Sonnet vs Opus, default vs high effort). Integrated with grym-sidecar for mid-turn status broadcasting.',
   },
@@ -121,6 +127,7 @@ export const projects: Project[] = [
     category: 'Systems Programming',
     accent: 'amber',
     current: true,
+    featured: true,
     description:
       'Real-time AI video effects engine and virtual production studio for Linux (internal codename: Project Null-Latency). Rust/Tauri v2 backend manages GStreamer pipelines, ONNX Runtime inference, and virtual camera output via dual-backend support (v4l2loopback + PipeWire). AI segmentation runs in a Python sidecar (MediaPipe Selfie Segmenter) over a Unix domain socket. Svelte 5 frontend provides two modes: a camera studio (NVIDIA Broadcast-style) and a scene editor (OBS-style). Outputs to virtual camera, MJPEG preview stream (:9002), WebRTC (:9001), and MKV recording.',
   },

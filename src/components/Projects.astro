@@ -1,5 +1,7 @@
 ---
 import { projects } from '../data/projects';
+
+const extras = projects.filter(p => !p.featured);
 ---
 
 <section class="work section" id="work">
@@ -13,10 +15,10 @@ import { projects } from '../data/projects';
       to an internal developer portal.
     </p>
 
-    <div class="timeline">
+    <div class="timeline" id="timeline">
       {projects.map((project, i) => (
         <div
-          class={`timeline-entry reveal ${project.current ? 'is-current' : ''}`}
+          class={`timeline-entry reveal ${project.current ? 'is-current' : ''} ${!project.featured ? 'is-extra' : ''}`}
           style={`--entry-accent: var(--accent-${project.accent}); --entry-accent-rgb: ${project.accent === 'cyan' ? '56, 189, 248' : '245, 158, 11'};`}
         >
           <div class="timeline-dot" aria-hidden="true"></div>
@@ -34,8 +36,28 @@ import { projects } from '../data/projects';
         </div>
       ))}
     </div>
+
+    {extras.length > 0 && (
+      <div class="expand-wrap reveal">
+        <button class="expand-btn mono" id="expand-btn" aria-expanded="false">
+          <span class="expand-label">+ view all {projects.length} projects</span>
+          <span class="collapse-label">− show less</span>
+        </button>
+      </div>
+    )}
   </div>
 </section>
+
+<script>
+  const btn = document.getElementById('expand-btn');
+  const timeline = document.getElementById('timeline');
+
+  btn?.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    timeline?.classList.toggle('show-all', !expanded);
+  });
+</script>
 
 <style>
   .work-intro {
@@ -80,6 +102,16 @@ import { projects } from '../data/projects';
     margin-bottom: 0;
   }
 
+  /* Hide non-featured entries by default */
+  .timeline-entry.is-extra {
+    display: none;
+  }
+
+  /* Show all when expanded */
+  .timeline.show-all .timeline-entry.is-extra {
+    display: block;
+  }
+
   /* Marker dot on the timeline */
   .timeline-dot {
     position: absolute;
@@ -109,10 +141,6 @@ import { projects } from '../data/projects';
   @keyframes pulse-dot {
     0%, 100% { box-shadow: 0 0 8px rgba(var(--entry-accent-rgb), 0.4); }
     50% { box-shadow: 0 0 16px rgba(var(--entry-accent-rgb), 0.7); }
-  }
-
-  .timeline-card {
-    /* glass-card base handles most styling */
   }
 
   .is-current .timeline-card {
@@ -168,6 +196,38 @@ import { projects } from '../data/projects';
     font-size: 0.9rem;
     line-height: 1.7;
   }
+
+  /* Expand / collapse button */
+  .expand-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .expand-btn {
+    background: transparent;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    color: var(--accent-cyan);
+    padding: 0.5rem 1.5rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background var(--transition-base), border-color var(--transition-base);
+    letter-spacing: 0.04em;
+  }
+
+  .expand-btn:hover {
+    background: rgba(56, 189, 248, 0.08);
+    border-color: rgba(56, 189, 248, 0.6);
+  }
+
+  /* Toggle label visibility */
+  .expand-btn .collapse-label { display: none; }
+  .expand-btn[aria-expanded="true"] .expand-label { display: none; }
+  .expand-btn[aria-expanded="true"] .collapse-label { display: inline; }
 
   @media (max-width: 768px) {
     .timeline {
