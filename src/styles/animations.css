@@ -29,6 +29,7 @@
 .reveal-stagger.visible > *:nth-child(5) { transition-delay: 320ms; }
 .reveal-stagger.visible > *:nth-child(6) { transition-delay: 400ms; }
 .reveal-stagger.visible > *:nth-child(7) { transition-delay: 480ms; }
+.reveal-stagger.visible > *:nth-child(8) { transition-delay: 560ms; }
 
 /* ===== Typing Animation ===== */
 @keyframes blink-caret {
