@@ -99,6 +99,7 @@ export const skillCategories: SkillCategory[] = [
       { name: 'Caddy' },
       { name: 'Docker Compose' },
       { name: 'Ansible' },
+      { name: 'Networking' },
       { name: 'ZFS' },
       { name: 'Monitoring' },
       { name: 'Self-Hosting' },
