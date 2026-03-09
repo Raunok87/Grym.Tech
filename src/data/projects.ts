@@ -116,18 +116,4 @@ export const projects: Project[] = [
     description:
       'Designed and deployed a modular sidecar-based homelab architecture: containerised companion services (Redis, Postgres, Nginx reverse proxy, Cloudflare Tunnel) running alongside primary applications via Docker Compose. Manages persistent storage, secrets, SSL termination, and inter-service networking entirely self-hosted. Continuously iterated on as a proving ground for production patterns at smaller scale.',
   },
-  {
-    title: 'Neovim Configuration (kickstart.nvim)',
-    category: 'Developer Tooling',
-    accent: 'amber',
-    description:
-      'Maintains a personal Neovim configuration forked from kickstart.nvim, tuned for platform engineering and polyglot development workflows. Configured LSPs for Rust, Go, TypeScript, Python, Lua, and Terraform; custom keymaps, Telescope fuzzy finding, and treesitter-based syntax/diagnostics. Dogfooded daily across homelab, work, and side projects.',
-  },
-  {
-    title: 'Pokete — Terminal-based RPG (Open Source)',
-    category: 'Game Dev / Open Source',
-    accent: 'cyan',
-    description:
-      'Contributing to Pokete, a terminal-based Pokémon-style RPG written in Python. Explores game loop design, ASCII rendering, and turn-based combat mechanics entirely within a terminal UI — bridging interests in game development and systems programming.',
-  },
 ];
