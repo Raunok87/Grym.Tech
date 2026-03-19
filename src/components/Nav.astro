@@ -1,16 +1,16 @@
 ---
 const links = [
-  { href: '#about', label: 'About' },
-  { href: '#work', label: 'Work' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#beyond', label: 'Beyond' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/work', label: 'Work' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/#skills', label: 'Skills' },
+  { href: '/#beyond', label: 'Beyond' },
+  { href: '/#contact', label: 'Contact' },
 ];
 ---
 
 <nav class="nav" id="nav">
   <div class="nav-inner container">
-    <a href="#" class="nav-brand glitch-hover mono">grym.tech</a>
+    <a href="/" class="nav-brand glitch-hover mono">grym.tech</a>
     <ul class="nav-links">
       {links.map(({ href, label }) => (
         <li><a href={href}>{label}</a></li>
