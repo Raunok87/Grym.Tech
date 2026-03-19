@@ -55,7 +55,7 @@ export const abridgeWins: Win[] = [
     body: 'Stood up private GKE clusters for NVIDIA Triton-based inference workloads — took the first production ML inference system from zero to running. Built Terraform modules with proper networking, security groups, node pools, and service mesh. Partnered with MLOps on model deployment, promotion workflows, and runtime telemetry.',
   },
   {
-    title: 'Kaiser Permanente Enterprise Enablement',
+    title: 'Enterprise Healthcare Partner Onboarding',
     category: 'Enterprise',
     accent: 'cyan',
     body: 'Unblocked a major healthcare enterprise partner by standing up a complete, isolated environment spanning 8+ repositories in a single week. Immediately enabled deal-critical integration testing and became the template for all subsequent enterprise onboarding.',
@@ -64,7 +64,7 @@ export const abridgeWins: Win[] = [
     title: 'FedRAMP & Regulated Market Readiness',
     category: 'Compliance',
     accent: 'amber',
-    body: 'Led onboarding of GCP Security Command Center Enterprise as the foundation for regulated market entry. Contributed to SSP and POA&M, defined logging and monitoring controls, and supported 3PAO audits. Positioned Abridge to pursue VA and government healthcare contracts.',
+    body: 'Led onboarding of GCP Security Command Center Enterprise as the foundation for regulated market entry. Contributed to SSP and POA&M, defined logging and monitoring controls, and supported 3PAO audits. Positioned the platform to pursue regulated government healthcare contracts.',
   },
   {
     title: 'Multi-region Reliability & Cost Governance',
