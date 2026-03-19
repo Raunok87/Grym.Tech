@@ -81,9 +81,13 @@ export const priorRoles: PriorRole[] = [
     period: 'Jun 2021 – Feb 2023',
     location: 'Greenville, SC (Remote)',
     bullets: [
-      'Senior AWS/GCP technical resource; mentored engineers across teams and drove the shift to a proactive platform engineering model.',
-      'Built and maintained the BI data platform — Redshift, Fivetran, and in-house ETL with near real-time streaming replication.',
-      'Established GitOps patterns and reusable Terraform/Ansible/SSM modules; standardized CI across application and infrastructure.',
+      'Senior technical resource for AWS and GCP, automation, and IaC; mentored engineers across teams.',
+      'Migrated Postgres 9.x to 12 and to Aurora; moved in-memory stores to ElastiCache (Redis).',
+      'Established GitOps patterns and reusable Terraform/Ansible/SSM modules; standardized CI for application and infrastructure.',
+      'Built and maintained the BI data platform: Redshift, Fivetran, and in-house ETL; implemented streaming for near real-time replication.',
+      'Owned CI/CD pipelines for application and IaC deployments.',
+      'Partnered on PCI-DSS, HIPAA, SOC 2, and HITRUST; set patch/CVE remediation and incident standards with Security, Compliance, and Legal.',
+      'Led backend infrastructure refactors to scale efficiently while managing costs; shifted the organization to a proactive platform engineering model.',
     ],
   },
   {
@@ -92,9 +96,11 @@ export const priorRoles: PriorRole[] = [
     period: 'Mar 2019 – Jun 2021',
     location: 'Greenville, SC (Remote)',
     bullets: [
-      'Led migration from Rancher to Kubernetes (kOps on AWS/EC2) with automated blue/green deploys and merge gates.',
-      'Built an OAuth 2.0 SSO connector in Go for Kubernetes, centralizing cluster authentication.',
-      'Drove CloudFormation (Troposphere) → Terraform migration of 100K+ lines of infrastructure code.',
+      'Led migration from Rancher to Kubernetes (kOps on AWS/EC2) with automated blue/green deploys, merge gates, coverage, and tests.',
+      'Built an OAuth 2.0 SSO connector in Go for Kubernetes; centralized cluster authentication.',
+      'AWS SME across EC2, RDS, EKS, ECS, API Gateway, Lambda, S3, Glacier, and related services.',
+      'Authored outage playbooks and reliability runbooks; created an internal knowledge base.',
+      'Drove CloudFormation (Troposphere) → Terraform migration of 100K+ lines; mentored via pairing and coaching.',
     ],
   },
   {
@@ -104,9 +110,23 @@ export const priorRoles: PriorRole[] = [
     period: 'Feb 2017 – Mar 2019',
     location: 'Atlanta, GA (Remote)',
     bullets: [
+      'Built turnkey blue/green deployment pipelines for core e-commerce; increased deploy frequency and rollback safety.',
       'Converted 99% of infrastructure from on-prem Rackspace to AWS in ~12 months; codified networking, compute, and application stacks.',
-      'Built turnkey blue/green deployment pipelines for core e-commerce, increasing deploy frequency and rollback safety.',
-      'Designed end-to-end observability — Prometheus/Graphite, Grafana, TICK/ELK — and led post-mortems.',
+      'Designed end-to-end observability: New Relic + client telemetry, Prometheus/Graphite + Grafana, and TICK/ELK for logging; led post-mortems.',
+      'Established automated pipelines for code, servers, networking, and underlying plumbing; senior escalation owner through post-mortem.',
+      'Created SCM strategies and CI/CD guardrails for the infra/devops team; embedded as AWS SME with delivery teams.',
+    ],
+  },
+  {
+    company: 'Website Pipeline',
+    title: 'Systems Administrator / DevOps Engineer',
+    period: 'Feb 2017 – Jan 2018',
+    location: 'Greenville, SC',
+    bullets: [
+      'Architected Docker/Kubernetes infrastructure (workers/managers, config management, load balancers, firewalls, dev environments) including performance testing and automation.',
+      'Operated an ElasticSearch cluster; integrated AWS and Azure; administered 1+ PB of storage across three domains and networks.',
+      'Managed a Hyper-V estate of ~300 VMs and 100 physical servers across 3 data centers; implemented disaster recovery and ran quarterly recovery drills for 400+ servers.',
+      'Owned the Microsoft web stack for 400+ sites (SSL, IIS bindings), DNS/DHCP/ADFS/Group Policy across 4 domains including PCI-scoped environments.',
     ],
   },
   {
@@ -115,7 +135,7 @@ export const priorRoles: PriorRole[] = [
     period: '2008 – 2017',
     location: '',
     bullets: [
-      'Roles at Website Pipeline, Tribe513, M33, and others. Delivered Hyper-V and network architecture, enterprise SCCM deployments, multi-site Windows domain services (DHCP/DNS/ADFS/Group Policy), and large-scale patch and automation programs.',
+      'Roles at Tribe513, M33, Robert Half/GHS, ZF Group, and others. Delivered Hyper-V and network architecture, enterprise SCCM deployments, multi-site Windows domain services (DHCP/DNS/ADFS/Group Policy), and large-scale patch and automation programs. Details available on request.',
     ],
   },
 ];
