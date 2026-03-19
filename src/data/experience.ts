@@ -24,7 +24,7 @@ export const abridgeRole = {
   title: 'Staff Platform Engineer',
   period: 'Feb 2023 – Present',
   location: 'Greenville, SC (Remote)',
-  summary: 'Day 1 platform hire at a healthcare AI company building ambient clinical documentation. Founded and grew the Platform Engineering organization, established the infrastructure and developer experience that scaled the product from early customers to 250+ healthcare deployments.',
+  summary: 'Day 1 platform hire at a healthcare AI company building ambient clinical documentation. Founded and grew the Platform Engineering organization, established the infrastructure and developer experience that scaled the product from a proof of concept to full production scaling to over 250 healthcare systems.',
 };
 
 export const buildersPortal = {
