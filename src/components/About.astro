@@ -34,6 +34,7 @@ const terminalLines = [
           debug a kernel panic, reason about GPU memory, or intuit why a distributed system is
           misbehaving. Curiosity is the cheat code.
         </p>
+        <a href="/work" class="about-work-link mono">→ see the work</a>
       </div>
 
       <div class="about-terminal reveal">
@@ -74,6 +75,20 @@ const terminalLines = [
 
   .about-prose p:last-child {
     margin-bottom: 0;
+  }
+
+  .about-work-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: var(--accent-cyan);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    transition: color var(--transition-fast), letter-spacing var(--transition-fast);
+  }
+
+  .about-work-link:hover {
+    color: var(--accent-amber);
+    letter-spacing: 0.08em;
   }
 
   /* Terminal */

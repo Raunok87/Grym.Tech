@@ -11,6 +11,11 @@
       12+ years turning infrastructure into a competitive advantage&mdash;and
       spending nights and weekends pushing into the tech that keeps it interesting.
     </p>
+    <div class="hero-ctas">
+      <a href="/work" class="cta-btn cta-primary">The Work</a>
+      <a href="/projects" class="cta-btn cta-secondary">Projects</a>
+    </div>
+
     <div class="hero-links">
       <a href="https://github.com/Raunok87" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="hero-icon-link">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -80,6 +85,51 @@
     font-size: 1.05rem;
     line-height: 1.7;
     margin: 0 auto 2rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 0.65rem 1.75rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: background var(--transition-base), color var(--transition-base), border-color var(--transition-base), transform var(--transition-fast);
+    text-decoration: none;
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .cta-primary {
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+    border: 1px solid var(--accent-cyan);
+  }
+
+  .cta-primary:hover {
+    background: transparent;
+    color: var(--accent-cyan);
+  }
+
+  .cta-secondary {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-hover);
+  }
+
+  .cta-secondary:hover {
+    color: var(--accent-cyan);
+    border-color: var(--accent-cyan);
   }
 
   .hero-links {
