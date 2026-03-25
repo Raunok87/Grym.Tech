@@ -45,6 +45,7 @@ import { abridgeRole, buildersPortal, abridgeWins, priorRoles } from '../data/ex
               <span class="featured-win-period mono">{buildersPortal.period}</span>
             </div>
             <p class="featured-win-one-liner">{buildersPortal.oneLiner}</p>
+            <p class="featured-win-subtitle mono">{buildersPortal.subtitle}</p>
           </div>
 
           <div class="capabilities-grid">
@@ -253,6 +254,13 @@ import { abridgeRole, buildersPortal, abridgeWins, priorRoles } from '../data/ex
     font-size: 1.05rem;
     line-height: 1.7;
     font-weight: 500;
+    margin-bottom: 0.625rem;
+  }
+
+  .featured-win-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.65;
   }
 
   /* Capabilities Grid */
