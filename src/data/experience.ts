@@ -10,6 +10,16 @@ export interface Capability {
   description: string;
 }
 
+export interface PortalStat {
+  value: string;
+  label: string;
+}
+
+export interface ArchitectureHighlight {
+  title: string;
+  detail: string;
+}
+
 export interface PriorRole {
   company: string;
   acquired?: string;
@@ -33,12 +43,35 @@ export const buildersPortal = {
   period: 'Nov 2025 – Present',
   capabilities: [
     { name: 'Push-Button Deployments', description: 'Collapsed environment setup from days of manual Terraform to a 4-step wizard: pick component, configure, preview YAML, one-click PR. Batch deploys with dependency graphs, deployment templates, and full rollback.' },
-    { name: 'Service Catalog', description: 'Backstage-style registry with ownership, tiers, compliance tracking, SLOs, and dependency mapping. Automatic GitHub sync, scorecards, and enrichment.' },
+    { name: 'Service Catalog v2', description: 'Backstage-equivalent registry with ownership, tiers, compliance tracking, SLOs, and dependency mapping. Automatic GitHub sync, scorecards, and enrichment — the missing piece for ownership and compliance tracking at scale.' },
     { name: 'Infrastructure Visibility', description: 'Unified view for Terraform plan/apply/cost across all infra-atmos stacks. PR-grouped workflows with plan diffs, cost impact, and AI analysis.' },
     { name: 'MCP Server — AI Agent Integration', description: "Auto-generates 102 tools from the portal's OpenAPI spec. AI agents connect via Private Service Connect tunnel — fully private, per-user API keys, RBAC-scoped." },
     { name: 'ArgoCD & Cloud Asset Inventory', description: 'Real-time K8s app sync status with drill-down resource trees and IAP-protected sync triggers. Live GCP resource browser across compute, networking, data, and storage.' },
   ] as Capability[],
-  strategicValue: 'Not a side project — the portal is becoming the operational control plane for Abridge engineering. With the MCP server, the entire platform is now programmable by AI agents.',
+  stats: [
+    { value: '187', label: 'merged PRs — 96% sole primary contributor' },
+    { value: '~4 mo', label: 'initial commit → production platform' },
+    { value: '16', label: 'backend plugins — modular, hot-addable' },
+    { value: '24', label: 'frontend pages' },
+    { value: '102', label: 'MCP tools auto-generated from OpenAPI' },
+    { value: '10', label: 'Architecture Decision Records' },
+    { value: '31', label: 'roadmap items across 5 tiers' },
+  ] as PortalStat[],
+  architecture: [
+    {
+      title: 'Plugin Architecture',
+      detail: '16 modular plugins that register their own routes and auto-upgrade storage from in-memory to PostgreSQL. New capabilities are added without touching core code.',
+    },
+    {
+      title: 'Production Migration — Zero Downtime',
+      detail: 'Moved from dev project to abridge-operations with zero downtime (ADR-004). Separate prod/dev environments, dedicated runtime SAs, and independent Cloud SQL instances.',
+    },
+    {
+      title: '31-Issue Roadmap — 5 Tiers',
+      detail: 'Next priorities: self-serve secrets management, runbook execution, environment promotion, incident context linking, and cost dashboard — all tracked in Linear.',
+    },
+  ] as ArchitectureHighlight[],
+  strategicValue: "This isn't a side project — it's the operational control plane for Abridge engineering. It replaces manual Terraform workflows with self-service, gives every engineer infrastructure visibility they didn't have before, and — with MCP — makes the entire platform programmable by AI agents.",
 };
 
 export const abridgeWins: Win[] = [
