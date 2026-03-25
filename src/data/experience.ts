@@ -10,6 +10,16 @@ export interface Capability {
   description: string;
 }
 
+export interface PortalStat {
+  value: string;
+  label: string;
+}
+
+export interface ArchitectureHighlight {
+  title: string;
+  detail: string;
+}
+
 export interface PriorRole {
   company: string;
   acquired?: string;
@@ -29,16 +39,45 @@ export const abridgeRole = {
 
 export const buildersPortal = {
   title: 'Builders Portal — Internal Developer Platform',
-  oneLiner: "Designed, built, and shipped Abridge's IDP as sole primary contributor — the operational control plane for all of engineering.",
+  oneLiner: "Single-handedly designed, built, and shipped Abridge's Internal Developer Portal — a full-stack platform (Go/Fiber backend, React/Vite frontend, Cloud SQL) that gives every engineer self-service infrastructure visibility, push-button deployments, and AI agent integration. 187 merged PRs across ~4 months, from first commit to production platform used by all of engineering.",
+  subtitle: 'A Backstage-alternative IDP running on Cloud Run in a dedicated operations project. 16 backend plugins, 24 frontend pages, full RBAC, immutable audit logging, and an MCP server for AI agent access.',
   period: 'Nov 2025 – Present',
   capabilities: [
-    { name: 'Push-Button Deployments', description: 'Collapsed environment setup from days of manual Terraform to a 4-step wizard: pick component, configure, preview YAML, one-click PR. Batch deploys with dependency graphs, deployment templates, and full rollback.' },
-    { name: 'Service Catalog', description: 'Backstage-style registry with ownership, tiers, compliance tracking, SLOs, and dependency mapping. Automatic GitHub sync, scorecards, and enrichment.' },
-    { name: 'Infrastructure Visibility', description: 'Unified view for Terraform plan/apply/cost across all infra-atmos stacks. PR-grouped workflows with plan diffs, cost impact, and AI analysis.' },
-    { name: 'MCP Server — AI Agent Integration', description: "Auto-generates 102 tools from the portal's OpenAPI spec. AI agents connect via Private Service Connect tunnel — fully private, per-user API keys, RBAC-scoped." },
-    { name: 'ArgoCD & Cloud Asset Inventory', description: 'Real-time K8s app sync status with drill-down resource trees and IAP-protected sync triggers. Live GCP resource browser across compute, networking, data, and storage.' },
+    { name: 'Infrastructure Visibility', description: 'Unified runs view for Terraform plan/apply/cost across all infra-atmos stacks. PR-grouped workflow runs with fuzzy search, section cards (plan diffs, cost impact, AI analysis), and 30s auto-refresh.' },
+    { name: 'Push-Button Deployments', description: '4-step deployment wizard: pick a component → configure variables (auto-populated from stack context) → preview merged YAML → one-click PR creation. Batch multi-component deploys with dependency graphs, templates for common patterns (Slack apps, Go microservices, static sites), full deployment history, and rollback.' },
+    { name: 'Service Catalog v2', description: 'Backstage-style service registry with ownership, tiers, compliance tracking, SLOs, and dependency mapping. Automatic GitHub sync, enrichment, filters, scorecard, and dark mode — the missing piece for ownership and compliance tracking at scale.' },
+    { name: 'ArgoCD Dashboard', description: 'Real-time sync status and health for all ArgoCD-managed K8s apps. Drill-down to resource tree, sync triggers from the portal, and IAP-protected instance support.' },
+    { name: 'Cloud Asset Inventory', description: 'Live GCP resource browser across compute, networking, data, and storage with change tracking and multi-scope support.' },
+    { name: 'Image Catalog', description: 'Container image registry browser with SBOM integration (package name, version, license, purl), version history, and staleness tracking.' },
+    { name: 'MCP Server — AI Agent Integration', description: 'Auto-generates 102 MCP tools from swagger.json. AI agents (APEX, Claude Code, Cursor) connect via Private Service Connect tunnel — fully private, no public internet. Per-user API keys (bpk_*), RBAC-scoped, SHA-256 hashed.' },
+    { name: 'Innovation Lab + Roadmap', description: 'Bidirectional GitHub Issues sync, feature voting, threaded comments, and a 3-column roadmap board (Planned → In Progress → Shipped) with label-driven status.' },
+    { name: 'Audit, RBAC & Security', description: 'Immutable audit log capturing every mutation. Three-role model with auto-provisioning from IAP headers, Google Group sync, and FedRAMP/HIPAA-ready retention. Slack DM notifications for deployment outcomes.' },
+    { name: 'Gamification', description: 'Drift remediation leaderboard with points, streaks, badges, and speed multipliers — turning infrastructure hygiene into a competitive sport.' },
   ] as Capability[],
-  strategicValue: 'Not a side project — the portal is becoming the operational control plane for Abridge engineering. With the MCP server, the entire platform is now programmable by AI agents.',
+  stats: [
+    { value: '187', label: 'merged PRs — sole primary contributor' },
+    { value: '~4 mo', label: 'initial commit → production platform' },
+    { value: '16', label: 'backend plugins — modular, hot-addable' },
+    { value: '24', label: 'frontend pages' },
+    { value: '102', label: 'MCP tools auto-generated from OpenAPI' },
+    { value: '10', label: 'Architecture Decision Records' },
+    { value: '31', label: 'roadmap items across 5 tiers' },
+  ] as PortalStat[],
+  architecture: [
+    {
+      title: 'Plugin Architecture',
+      detail: '16 modular plugins that register their own routes and auto-upgrade storage from in-memory to PostgreSQL. New capabilities are added without touching core code.',
+    },
+    {
+      title: 'Production Migration — Zero Downtime',
+      detail: 'Moved from dev project to abridge-operations with zero downtime (ADR-004). Separate prod/dev environments, dedicated runtime SAs, and independent Cloud SQL instances.',
+    },
+    {
+      title: '31-Issue Roadmap — 5 Tiers',
+      detail: 'Next priorities: self-serve secrets management, runbook execution, environment promotion, incident context linking, and cost dashboard — all tracked in Linear.',
+    },
+  ] as ArchitectureHighlight[],
+  strategicValue: "This isn't a side project — it's becoming the operational control plane for Abridge engineering. It replaces manual Terraform workflows with self-service, gives every engineer infrastructure visibility they didn't have before, and — with MCP — makes the entire portal programmable by AI agents.",
 };
 
 export const abridgeWins: Win[] = [
