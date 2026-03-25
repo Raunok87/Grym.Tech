@@ -40,7 +40,7 @@ export const abridgeRole = {
 export const buildersPortal = {
   title: 'Builders Portal — Internal Developer Platform',
   oneLiner: "Single-handedly designed, built, and shipped Abridge's Internal Developer Portal — a full-stack platform (Go/Fiber backend, React/Vite frontend, Cloud SQL) that gives every engineer self-service infrastructure visibility, push-button deployments, and AI agent integration. 187 merged PRs across ~4 months, from first commit to production platform used by all of engineering.",
-  subtitle: 'A Backstage-alternative IDP running on Cloud Run in abridge-operations, accessible at portal.abridge.coffee. 16 backend plugins, 24 frontend pages, full RBAC, immutable audit logging, and an MCP server for AI agent access.',
+  subtitle: 'A Backstage-alternative IDP running on Cloud Run in a dedicated operations project. 16 backend plugins, 24 frontend pages, full RBAC, immutable audit logging, and an MCP server for AI agent access.',
   period: 'Nov 2025 – Present',
   capabilities: [
     { name: 'Infrastructure Visibility', description: 'Unified runs view for Terraform plan/apply/cost across all infra-atmos stacks. PR-grouped workflow runs with fuzzy search, section cards (plan diffs, cost impact, AI analysis), and 30s auto-refresh.' },
