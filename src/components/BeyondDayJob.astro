@@ -1,29 +1,34 @@
 ---
 const vignettes = [
   {
-    title: 'Real-time Networked Systems',
+    title: 'Voice AI from Scratch',
     accent: 'var(--accent-cyan)',
-    body: `Building game servers taught me more about distributed systems than any textbook. When you need state synchronization across dozens of clients at 60Hz, you learn to think about consistency, latency budgets, and graceful degradation in ways that translate directly to production platform work.`,
+    accentRgb: '56, 189, 248',
+    body: `Built a complete voice pipeline: wake word detection → speech-to-text → LLM reasoning → text-to-speech. Not using a framework — raw audio processing, WebSocket bridges between Go and Python, and a personality system that makes Claude speak with a Cajun accent.`,
   },
   {
-    title: 'AI at the Edge',
+    title: 'Real-time at 60fps',
     accent: 'var(--accent-amber)',
-    body: `Running computer vision models and LLM inference on local GPUs means understanding the full stack—from CUDA memory management to model optimization to serving infrastructure. These patterns map cleanly to building ML platforms at scale.`,
+    accentRgb: '245, 158, 11',
+    body: `Game servers that synchronize state across clients at tick rate. Spatial hashing for collision, pathfinding for mob AI, ability resolution for 54 D&D abilities. When your latency budget is one frame, you learn distributed systems from the inside out.`,
   },
   {
-    title: 'Systems from Scratch',
+    title: 'AI That Ships Code',
     accent: 'var(--accent-cyan)',
-    body: `Writing in Rust and Go for fun builds the kind of intuition that makes you dangerous in a production debugging session. When you've fought the borrow checker and hand-managed goroutine lifecycles, reasoning about memory leaks and race conditions in production becomes second nature.`,
+    accentRgb: '56, 189, 248',
+    body: `Grym doesn't just answer questions — it SSHs into the homelab, clones repos, writes code, runs tests, and opens PRs. 150+ skills, channel-scoped permissions, destructive operation guardrails. A production AI agent, not a chatbot.`,
   },
   {
-    title: 'The Homelab',
+    title: 'Zero-Copy Video Pipelines',
     accent: 'var(--accent-amber)',
-    body: `TrueNAS Scale 24.10 running a Docker Compose app stack — Plex, Jellyfin, Sonarr, Radarr, SABnzbd, Pi-hole, Tailscale, Cloudflare DDNS, and a Minecraft + FTB modpack server with BlueMap. NanoClaw and grym-sidecar run as first-class systemd services alongside the containers. Same disciplines as cloud platform work: service dependencies, secrets management, rolling restarts, and wondering why the network is broken at 11pm.`,
+    accentRgb: '245, 158, 11',
+    body: `Rust + GStreamer + ONNX Runtime. Real-time AI segmentation at <16ms per frame. Dual virtual camera backends (v4l2loopback + PipeWire). The kind of systems programming that makes you dangerous in any stack.`,
   },
   {
-    title: 'AI Agents & Automation',
+    title: 'The Homelab as a Platform',
     accent: 'var(--accent-cyan)',
-    body: `Building autonomous agents that actually do things — scheduling tasks, routing messages across platforms, wiring up Claude to real infrastructure. Less chatbot, more digital coworker.`,
+    accentRgb: '56, 189, 248',
+    body: `Ubuntu 24.04, ZFS, Docker Compose, Caddy with wildcard certs, AdGuard DNS, Tailscale mesh, GitOps deploys via GitHub Actions. Same disciplines as cloud platform work, but the on-call rotation is just me at 11pm.`,
   },
 ];
 ---
@@ -35,8 +40,14 @@ const vignettes = [
 
     <div class="vignettes">
       {vignettes.map((v, i) => (
-        <div class={`vignette-card reveal ${i % 2 !== 0 ? 'vignette-offset' : ''}`} style={`--accent: ${v.accent};`}>
-          <h3 class="vignette-title">{v.title}</h3>
+        <div
+          class={`vignette-card reveal ${i % 2 !== 0 ? 'vignette-offset' : ''}`}
+          style={`--accent: ${v.accent}; --accent-rgb: ${v.accentRgb};`}
+        >
+          <div class="vignette-header">
+            <span class="vignette-number mono">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="vignette-title">{v.title}</h3>
+          </div>
           <p class="vignette-body">{v.body}</p>
         </div>
       ))}
@@ -58,20 +69,34 @@ const vignettes = [
     border-left: 3px solid var(--accent);
     background: var(--bg-card);
     border-radius: 0 12px 12px 0;
-    transition: border-color var(--transition-base), background var(--transition-base);
+    transition: border-color var(--transition-base), background var(--transition-base), box-shadow var(--transition-base);
   }
 
   .vignette-card:hover {
     background: var(--bg-card-hover);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 16px rgba(var(--accent-rgb), 0.06);
   }
 
   .vignette-offset {
     margin-left: 3rem;
   }
 
+  .vignette-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .vignette-number {
+    font-size: 0.75rem;
+    color: var(--accent);
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+
   .vignette-title {
     font-size: 1.2rem;
-    margin-bottom: 0.75rem;
     color: var(--text-primary);
   }
 

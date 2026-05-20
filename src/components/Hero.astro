@@ -4,15 +4,21 @@
 <section class="hero" id="hero">
   <div class="hero-content">
     <h1 class="hero-name">Drew Davis</h1>
-    <p class="hero-title">Staff Platform Engineer</p>
+    <div class="hero-title-wrap">
+      <span class="hero-title hero-title-1">Staff Platform Engineer</span>
+      <span class="hero-title hero-title-2">AI Systems Builder</span>
+      <span class="hero-title hero-title-3">Game Engine Architect</span>
+      <span class="hero-title hero-title-4">Full-Stack Polyglot</span>
+    </div>
     <p class="hero-pitch">
-      Building the platforms that teams ship on.
-      12+ years turning infrastructure into a competitive advantage&mdash;and
-      spending nights and weekends pushing into the tech that keeps it interesting.
+      I build the platforms that teams ship on at scale&mdash;and then go home and build
+      JARVIS, game engines, and real-time AI video pipelines. 17 years of turning
+      &ldquo;that&rsquo;s impossible&rdquo; into &ldquo;oh, it shipped.&rdquo;
     </p>
     <div class="hero-ctas">
       <a href="/work" class="cta-btn cta-primary">The Work</a>
       <a href="/projects" class="cta-btn cta-secondary">Projects</a>
+      <a href="/gambit" class="cta-btn cta-tertiary">Meet Gambit</a>
     </div>
 
     <div class="hero-links">
@@ -70,22 +76,55 @@
     background-clip: text;
   }
 
-  .hero-alias {
-    color: var(--accent-cyan);
-    font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  /* === Title cycling via CSS keyframes === */
+  .hero-title-wrap {
+    position: relative;
+    height: 2.25em;
     margin-bottom: 1.5rem;
-    opacity: 0.8;
+    overflow: hidden;
   }
 
   .hero-title {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: clamp(1.25rem, 2.5vw, 1.75rem);
     color: var(--text-secondary);
     font-weight: 500;
-    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: titleCycle 12s infinite;
+  }
+
+  .hero-title::after {
+    content: '|';
+    display: inline-block;
+    margin-left: 2px;
+    color: var(--accent-amber);
+    animation: blink-caret 1s step-end infinite;
+  }
+
+  .hero-title-1 { animation-delay: 0s; }
+  .hero-title-2 { animation-delay: 3s; }
+  .hero-title-3 { animation-delay: 6s; }
+  .hero-title-4 { animation-delay: 9s; }
+
+  @keyframes titleCycle {
+    0%    { opacity: 0; transform: translateY(8px); }
+    2%    { opacity: 1; transform: translateY(0); }
+    23%   { opacity: 1; transform: translateY(0); }
+    25%   { opacity: 0; transform: translateY(-8px); }
+    100%  { opacity: 0; }
+  }
+
+  @keyframes blink-caret {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
   }
 
   .hero-pitch {
-    max-width: 600px;
+    max-width: 640px;
     color: var(--text-secondary);
     font-size: 1.05rem;
     line-height: 1.7;
@@ -135,6 +174,18 @@
   .cta-secondary:hover {
     color: var(--accent-cyan);
     border-color: var(--accent-cyan);
+  }
+
+  .cta-tertiary {
+    background: transparent;
+    color: var(--accent-amber);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+  }
+
+  .cta-tertiary:hover {
+    background: rgba(245, 158, 11, 0.08);
+    border-color: var(--accent-amber);
+    color: var(--accent-amber);
   }
 
   .hero-links {

@@ -1,0 +1,842 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StarField from '../components/StarField.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Grym — grym.tech">
+  <StarField />
+  <Nav />
+  <main>
+
+    <!-- ═══════════════════ HERO ═══════════════════ -->
+    <section class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-badge mono">Homelab Agent · 150+ Skills · Always On</div>
+        <h1 class="hero-title"><span class="accent-cyan">Grym</span></h1>
+        <p class="hero-subtitle">Autonomous AI infrastructure agent running on a homelab.</p>
+        <p class="hero-sub-detail">Not a chatbot. An operator. It has SSH access, creates PRs, manages Docker containers, and maintains real infrastructure — 24/7.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ WHAT GRYM DOES ═══════════════════ -->
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">01</span>
+          <h2 class="section-title">What Grym Does</h2>
+          <p class="section-desc">Not a chatbot — an autonomous agent with real access to real infrastructure.</p>
+        </div>
+
+        <div class="capabilities-grid">
+          <div class="capability-card glass-card reveal">
+            <div class="cap-icon">
+              <span class="cap-icon-inner">$</span>
+            </div>
+            <h3>SSH Access</h3>
+            <p>Direct SSH access to the homelab host machine. Runs real shell commands — file operations, process management, log inspection, system diagnostics. Not sandboxed to a chat window.</p>
+          </div>
+
+          <div class="capability-card glass-card reveal">
+            <div class="cap-icon">
+              <span class="cap-icon-inner git-icon">⑂</span>
+            </div>
+            <h3>GitHub Integration</h3>
+            <p>Creates branches, commits code, opens pull requests. Strict rule: <span class="accent-amber">never merges its own work</span>. Drew reviews and approves every change. Full audit trail in the commit history.</p>
+          </div>
+
+          <div class="capability-card glass-card reveal">
+            <div class="cap-icon">
+              <span class="cap-icon-inner">#</span>
+            </div>
+            <h3>Discord Presence</h3>
+            <p>Active across 10+ scoped channels. Each channel has a defined purpose — <span class="mono">#homelab</span> for infrastructure, <span class="mono">#gambit</span> for project work, <span class="mono">#client</span> for scoped repos.</p>
+          </div>
+
+          <div class="capability-card glass-card reveal">
+            <div class="cap-icon">
+              <span class="cap-icon-inner">⚡</span>
+            </div>
+            <h3>150+ Procedural Skills</h3>
+            <p>A skill system that defines how Grym operates. Not just prompts — structured procedures for Docker management, Git workflows, deployment recipes, monitoring checks, and more.</p>
+          </div>
+
+          <div class="capability-card glass-card reveal">
+            <div class="cap-icon">
+              <span class="cap-icon-inner">⏰</span>
+            </div>
+            <h3>Scheduled Operations</h3>
+            <p>Cron jobs for health checks, backup verification, log rotation, and proactive monitoring. Background tasks that run without being asked. Watches for drift, reports anomalies.</p>
+          </div>
+
+          <div class="capability-card glass-card reveal">
+            <div class="cap-icon">
+              <span class="cap-icon-inner">🏗</span>
+            </div>
+            <h3>Real Infrastructure</h3>
+            <p>Manages Docker, ZFS pools, Caddy reverse proxy, DNS records, Tailscale mesh networking. This isn't a toy — it's managing production services that Drew relies on daily.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ OPERATING MODEL ═══════════════════ -->
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">02</span>
+          <h2 class="section-title">The Operating Model</h2>
+          <p class="section-desc">How an autonomous AI agent runs safely on real infrastructure.</p>
+        </div>
+
+        <div class="model-layout">
+          <div class="model-diagram glass-card reveal">
+            <h3>Runtime Architecture</h3>
+            <div class="model-stack">
+              <div class="model-layer layer-container">
+                <span class="layer-label mono">Docker Container</span>
+                <div class="layer-inner">
+                  <div class="model-block agent">
+                    <span class="block-name">Hermes Agent</span>
+                    <span class="block-detail mono">Claude Opus 4</span>
+                  </div>
+                  <div class="model-block skills">
+                    <span class="block-name">Skill System</span>
+                    <span class="block-detail mono">150+ procedures</span>
+                  </div>
+                  <div class="model-block memory">
+                    <span class="block-name">Memory</span>
+                    <span class="block-detail mono">Persistent context</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="model-connectors">
+                <div class="connector-line"></div>
+                <div class="connector-label mono">SSH · key auth</div>
+                <div class="connector-line"></div>
+              </div>
+
+              <div class="model-layer layer-host">
+                <span class="layer-label mono">Homelab Host · Ubuntu 24.04</span>
+                <div class="layer-inner">
+                  <div class="model-block infra">
+                    <span class="block-name">Docker Engine</span>
+                  </div>
+                  <div class="model-block infra">
+                    <span class="block-name">ZFS · Caddy · DNS</span>
+                  </div>
+                  <div class="model-block infra">
+                    <span class="block-name">GitHub CLI + Token</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="model-details">
+            <div class="model-detail-card glass-card reveal">
+              <h3>Channel Scoping</h3>
+              <div class="scope-list">
+                <div class="scope-item">
+                  <span class="scope-channel mono">#homelab</span>
+                  <span class="scope-desc">Infrastructure ops, Docker, ZFS, backups</span>
+                </div>
+                <div class="scope-item">
+                  <span class="scope-channel mono">#gambit</span>
+                  <span class="scope-desc">Project Gambit development work</span>
+                </div>
+                <div class="scope-item">
+                  <span class="scope-channel mono">#client</span>
+                  <span class="scope-desc">Scoped repos, isolated context</span>
+                </div>
+                <div class="scope-item">
+                  <span class="scope-channel mono">#general</span>
+                  <span class="scope-desc">Cross-cutting tasks, planning</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="model-detail-card glass-card reveal">
+              <h3>Safety Guardrails</h3>
+              <ul class="guardrail-list">
+                <li>
+                  <span class="guardrail-icon">🔒</span>
+                  <span>Destructive operations require explicit confirmation</span>
+                </li>
+                <li>
+                  <span class="guardrail-icon">🚫</span>
+                  <span>Never pushes to <span class="mono">main</span> — always branches + PRs</span>
+                </li>
+                <li>
+                  <span class="guardrail-icon">🔍</span>
+                  <span>Investigates before deleting — reads before it writes</span>
+                </li>
+                <li>
+                  <span class="guardrail-icon">📋</span>
+                  <span>Never merges its own PRs — Drew approves everything</span>
+                </li>
+                <li>
+                  <span class="guardrail-icon">🏗</span>
+                  <span>Sandbox isolation — GitHub tokens live on host, not in container</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ WHAT GRYM HAS SHIPPED ═══════════════════ -->
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">03</span>
+          <h2 class="section-title">What Grym Has Shipped</h2>
+          <p class="section-desc">Real output from an autonomous agent — not demos, not proofs of concept.</p>
+        </div>
+
+        <div class="shipped-timeline">
+          <div class="shipped-item glass-card reveal">
+            <div class="shipped-marker"></div>
+            <div class="shipped-content">
+              <h3>Gambit's Widget Dashboard</h3>
+              <p>Built and iterated the entire Gambit dashboard UI — StatusOrb, voice activity, personality controls, system monitoring. Used <span class="accent-cyan">3 parallel subagents</span> working on different widget systems simultaneously.</p>
+              <div class="shipped-tags">
+                <span class="shipped-tag mono">Svelte 5</span>
+                <span class="shipped-tag mono">3 subagents</span>
+                <span class="shipped-tag mono">Widget system</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="shipped-item glass-card reveal">
+            <div class="shipped-marker"></div>
+            <div class="shipped-content">
+              <h3>GitHub Actions Self-Hosted Runners</h3>
+              <p>Set up and configured self-hosted GitHub Actions runners across <span class="accent-amber">4 repositories</span>. Installed runner service, configured Docker-in-Docker, set up auto-start on boot.</p>
+              <div class="shipped-tags">
+                <span class="shipped-tag mono">CI/CD</span>
+                <span class="shipped-tag mono">4 repos</span>
+                <span class="shipped-tag mono">Docker-in-Docker</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="shipped-item glass-card reveal">
+            <div class="shipped-marker"></div>
+            <div class="shipped-content">
+              <h3>Homelab Service Stack</h3>
+              <p>Deployed and configured Caddy (reverse proxy + automatic HTTPS), AdGuard Home (DNS filtering), and the complete media stack. All Docker-managed, all with health checks.</p>
+              <div class="shipped-tags">
+                <span class="shipped-tag mono">Caddy</span>
+                <span class="shipped-tag mono">AdGuard</span>
+                <span class="shipped-tag mono">Media Stack</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="shipped-item glass-card reveal">
+            <div class="shipped-marker"></div>
+            <div class="shipped-content">
+              <h3>This Portfolio Site</h3>
+              <p>Designed, built, and deployed <span class="accent-cyan">grym.tech</span> — the site you're looking at right now. Astro, Tailwind, custom animations, responsive design. Shipped end-to-end by an AI agent.</p>
+              <div class="shipped-tags">
+                <span class="shipped-tag mono">Astro</span>
+                <span class="shipped-tag mono">Full site</span>
+                <span class="shipped-tag mono">Self-referential</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="shipped-item glass-card reveal">
+            <div class="shipped-marker"></div>
+            <div class="shipped-content">
+              <h3>GitOps Infrastructure Maintenance</h3>
+              <p>Ongoing infrastructure management via Git-tracked changes. Monitors service health, rotates logs, verifies backups, applies updates — all through the PR workflow.</p>
+              <div class="shipped-tags">
+                <span class="shipped-tag mono">GitOps</span>
+                <span class="shipped-tag mono">Ongoing</span>
+                <span class="shipped-tag mono">Automated</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ TECH STACK ═══════════════════ -->
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">04</span>
+          <h2 class="section-title">Tech Stack</h2>
+          <p class="section-desc">What powers an autonomous infrastructure agent.</p>
+        </div>
+
+        <div class="stack-grid">
+          <div class="stack-card glass-card reveal">
+            <div class="stack-icon">🐳</div>
+            <h3>Runtime</h3>
+            <ul class="stack-list">
+              <li><span class="mono">Hermes Agent</span> — core framework</li>
+              <li><span class="mono">Docker</span> — containerized runtime</li>
+              <li><span class="mono">Ubuntu 24.04</span> — host OS</li>
+            </ul>
+          </div>
+
+          <div class="stack-card glass-card reveal">
+            <div class="stack-icon">🧠</div>
+            <h3>AI</h3>
+            <ul class="stack-list">
+              <li><span class="mono">Claude Opus 4</span> — reasoning engine</li>
+              <li><span class="mono">Skill System</span> — 150+ procedures</li>
+              <li><span class="mono">Memory</span> — persistent context</li>
+            </ul>
+          </div>
+
+          <div class="stack-card glass-card reveal">
+            <div class="stack-icon">🔧</div>
+            <h3>Infrastructure</h3>
+            <ul class="stack-list">
+              <li><span class="mono">SSH</span> — host access via key auth</li>
+              <li><span class="mono">GitHub API</span> — branches, PRs, code</li>
+              <li><span class="mono">Discord</span> — gateway + scoped channels</li>
+            </ul>
+          </div>
+
+          <div class="stack-card glass-card reveal">
+            <div class="stack-icon">💾</div>
+            <h3>Storage</h3>
+            <ul class="stack-list">
+              <li><span class="mono">ZFS Pool</span> — 14.4TB managed storage</li>
+              <li><span class="mono">GCS Backups</span> — off-site via rclone</li>
+              <li><span class="mono">Docker Volumes</span> — service state</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ THE POINT ═══════════════════ -->
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">05</span>
+          <h2 class="section-title">The Point</h2>
+        </div>
+
+        <div class="point-card glass-card reveal">
+          <p class="point-text">Drew doesn't just <em>use</em> AI tools — he builds autonomous AI infrastructure. Grym is a production system that manages real services, ships real code, and operates 24/7 on real hardware. It's the difference between prompting ChatGPT and running an AI agent that has root access to your homelab.</p>
+          <div class="point-stats">
+            <div class="point-stat">
+              <span class="point-stat-value accent-cyan">150+</span>
+              <span class="point-stat-label">Skills</span>
+            </div>
+            <div class="point-stat">
+              <span class="point-stat-value accent-amber">10+</span>
+              <span class="point-stat-label">Channels</span>
+            </div>
+            <div class="point-stat">
+              <span class="point-stat-value accent-cyan">14.4TB</span>
+              <span class="point-stat-label">Managed Storage</span>
+            </div>
+            <div class="point-stat">
+              <span class="point-stat-value accent-amber">24/7</span>
+              <span class="point-stat-label">Always On</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ─── HERO ─── */
+  .hero-section {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 1.5rem 4rem;
+    position: relative;
+  }
+
+  .hero-container {
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--accent-cyan);
+    background: rgba(56, 189, 248, 0.06);
+    margin-bottom: 2rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--text-primary);
+    margin: 0 0 1.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0 0 1rem;
+  }
+
+  .hero-sub-detail {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .accent-cyan { color: var(--accent-cyan); }
+  .accent-amber { color: var(--accent-amber); }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-header {
+    position: relative;
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.75rem;
+  }
+
+  .section-desc {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 600px;
+  }
+
+  /* ─── CAPABILITIES ─── */
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .capability-card {
+    padding: 1.75rem;
+  }
+
+  .cap-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .cap-icon-inner {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+  }
+
+  .git-icon {
+    font-size: 1.3rem;
+  }
+
+  .capability-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.75rem;
+  }
+
+  .capability-card p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ─── OPERATING MODEL ─── */
+  .model-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .model-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .model-diagram {
+    padding: 1.75rem;
+  }
+
+  .model-diagram h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 1.25rem;
+  }
+
+  .model-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .model-layer {
+    padding: 1.25rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .layer-container {
+    background: rgba(56, 189, 248, 0.04);
+    border-color: rgba(56, 189, 248, 0.15);
+  }
+
+  .layer-host {
+    background: rgba(245, 158, 11, 0.04);
+    border-color: rgba(245, 158, 11, 0.15);
+  }
+
+  .layer-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .layer-inner {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .model-block {
+    flex: 1;
+    min-width: 100px;
+    padding: 0.6rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-card);
+  }
+
+  .model-block.agent { border-left: 3px solid var(--accent-cyan); }
+  .model-block.skills { border-left: 3px solid #a78bfa; }
+  .model-block.memory { border-left: 3px solid #22c55e; }
+  .model-block.infra { border-left: 3px solid var(--accent-amber); }
+
+  .block-name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .block-detail {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+  }
+
+  .model-connectors {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+  }
+
+  .connector-line {
+    width: 2rem;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+  }
+
+  .connector-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .model-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .model-detail-card {
+    padding: 1.5rem;
+  }
+
+  .model-detail-card h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+  }
+
+  /* Channel Scoping */
+  .scope-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .scope-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .scope-channel {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-cyan);
+  }
+
+  .scope-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* Guardrails */
+  .guardrail-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .guardrail-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .guardrail-icon {
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    margin-top: 1px;
+  }
+
+  /* ─── SHIPPED ─── */
+  .shipped-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .shipped-timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent-cyan), var(--accent-amber), transparent);
+  }
+
+  .shipped-item {
+    padding: 1.5rem;
+    position: relative;
+  }
+
+  .shipped-marker {
+    position: absolute;
+    left: -2rem;
+    top: 1.75rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 2px solid var(--accent-cyan);
+    transform: translateX(-50%);
+    margin-left: 8px;
+    z-index: 1;
+  }
+
+  .shipped-item:nth-child(even) .shipped-marker {
+    border-color: var(--accent-amber);
+  }
+
+  .shipped-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.6rem;
+  }
+
+  .shipped-content p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin: 0 0 0.75rem;
+  }
+
+  .shipped-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .shipped-tag {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  /* ─── TECH STACK ─── */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .stack-card {
+    padding: 1.5rem;
+  }
+
+  .stack-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .stack-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+  }
+
+  .stack-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .stack-list li {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .stack-list li .mono {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  /* ─── THE POINT ─── */
+  .point-card {
+    padding: 2.5rem;
+    text-align: center;
+  }
+
+  .point-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin: 0 auto 2.5rem;
+    max-width: 700px;
+  }
+
+  .point-text em {
+    color: var(--accent-amber);
+    font-style: italic;
+  }
+
+  .point-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .point-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .point-stat-value {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .point-stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>

@@ -1,11 +1,11 @@
 ---
 const terminalLines = [
-  '$ kubectl get nodes -o wide',
+  '$ gambit voice start --personality remy',
+  '$ grym deploy homelab/caddy --branch main',
+  '$ cargo build --release --features gpu',
+  '$ kubectl get pods -n platform | wc -l → 847',
+  '$ sysw sync --source radarr --full',
   '$ terraform plan -out=platform.tfplan',
-  '$ helm upgrade --install platform ./charts',
-  '$ argocd app sync production',
-  '$ kubectl top pods -n platform',
-  '$ terraform apply -auto-approve',
 ];
 ---
 
@@ -17,24 +17,29 @@ const terminalLines = [
     <div class="about-grid">
       <div class="about-prose reveal">
         <p>
-          I build the platforms that engineering teams ship on. At Abridge AI, I helped grow the
-          platform engineering organization from 1 to 25, standing up the cloud infrastructure,
-          Kubernetes clusters, and CI/CD pipelines that let a healthcare AI company move fast
-          without breaking compliance.
+          I build the platforms that engineering teams ship on. At Abridge AI, I grew the
+          platform engineering organization from 1&nbsp;to&nbsp;25, standing up the Internal Developer
+          Platform (Builders Portal), the cloud infrastructure, Kubernetes clusters, and CI/CD
+          pipelines that let a healthcare AI company move fast without breaking
+          compliance&mdash;FedRAMP, multi-region, the works.
         </p>
         <p>
-          Over 12+ years, I've focused on the intersection of developer experience and production
-          reliability&mdash;designing systems where "it just works" is the result of a lot of
-          deliberate engineering underneath. Cloud-native architectures, infrastructure as code,
-          and a philosophy that the best platform is the one developers don't have to think about.
+          The real differentiator is the breadth behind the depth. I built a JARVIS-inspired
+          voice AI assistant called <strong>Gambit</strong>&mdash;Electron + Go + Python,
+          455&nbsp;tests, wake word detection to personality-driven speech. I built an autonomous
+          AI agent (<strong>Grym</strong>) that manages real infrastructure via SSH and ships code
+          through GitHub PRs. I built a real-time AI video engine in Rust that does
+          segmentation at&nbsp;&lt;16ms per frame.
         </p>
         <p>
-          What sets me apart is the breadth behind the depth. The hobby-tech&mdash;game engines,
-          ML pipelines, systems programming&mdash;isn't a distraction. It's the reason I can
-          debug a kernel panic, reason about GPU memory, or intuit why a distributed system is
-          misbehaving. Curiosity is the cheat code.
+          The thesis is simple: curiosity isn&rsquo;t a hobby, it&rsquo;s an engineering
+          superpower. The person who debugs GStreamer pipelines at night is the person who
+          intuits why your production system is misbehaving at 3am.
         </p>
-        <a href="/work" class="about-work-link mono">→ see the work</a>
+        <div class="about-links">
+          <a href="/work" class="about-work-link mono">→ see the work</a>
+          <a href="/gambit" class="about-work-link about-gambit-link mono">→ meet gambit</a>
+        </div>
       </div>
 
       <div class="about-terminal reveal">
@@ -73,13 +78,24 @@ const terminalLines = [
     line-height: 1.8;
   }
 
-  .about-prose p:last-child {
+  .about-prose p:last-of-type {
     margin-bottom: 0;
+  }
+
+  .about-prose strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .about-links {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
   }
 
   .about-work-link {
     display: inline-block;
-    margin-top: 1.5rem;
     color: var(--accent-cyan);
     font-size: 0.85rem;
     letter-spacing: 0.04em;
@@ -89,6 +105,14 @@ const terminalLines = [
   .about-work-link:hover {
     color: var(--accent-amber);
     letter-spacing: 0.08em;
+  }
+
+  .about-gambit-link {
+    color: var(--accent-amber);
+  }
+
+  .about-gambit-link:hover {
+    color: var(--accent-cyan);
   }
 
   /* Terminal */
