@@ -1,0 +1,1346 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StarField from '../components/StarField.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Project Gambit — grym.tech">
+  <StarField />
+  <Nav />
+  <main>
+
+    <!-- ═══════════════════ HERO ═══════════════════ -->
+    <section class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-badge mono">Active Development · 100+ PRs · 455 Tests</div>
+        <h1 class="hero-title">Project <span class="accent-cyan">Gambit</span></h1>
+        <p class="hero-subtitle">JARVIS-inspired personal AI assistant. Named after <span class="accent-amber">Remy LeBeau</span>.</p>
+        <div class="hero-tags">
+          <span class="tag">Electron</span>
+          <span class="tag">Go</span>
+          <span class="tag">Python</span>
+          <span class="tag">Svelte 5</span>
+          <span class="tag">Claude API</span>
+          <span class="tag">Voice Pipeline</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ ARCHITECTURE ═══════════════════ -->
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">01</span>
+          <h2 class="section-title">Architecture Overview</h2>
+          <p class="section-desc">Two-machine orchestration — desktop and homelab working in concert.</p>
+        </div>
+
+        <div class="arch-grid">
+          <!-- Colossus -->
+          <div class="arch-machine glass-card">
+            <div class="arch-machine-label">
+              <span class="machine-icon">🖥</span>
+              <div>
+                <h3 class="arch-machine-name">Colossus</h3>
+                <span class="arch-machine-role mono">Drew's Desktop</span>
+              </div>
+            </div>
+            <div class="arch-components">
+              <div class="arch-component electron">
+                <span class="component-name">Electron App</span>
+                <span class="component-detail mono">Svelte 5 + Tailwind</span>
+              </div>
+              <div class="arch-component go">
+                <span class="component-name">Go Sidecar</span>
+                <span class="component-detail mono">:9300 · WebSocket bridge</span>
+              </div>
+              <div class="arch-component python">
+                <span class="component-name">Python Voice Runtime</span>
+                <span class="component-detail mono">Wake word · STT · TTS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Connection line -->
+          <div class="arch-connection">
+            <div class="arch-line"></div>
+            <span class="arch-protocol mono">Tailscale · SSE · WebSocket</span>
+            <div class="arch-line"></div>
+          </div>
+
+          <!-- Homelab -->
+          <div class="arch-machine glass-card">
+            <div class="arch-machine-label">
+              <span class="machine-icon">🏠</span>
+              <div>
+                <h3 class="arch-machine-name">Homelab Server</h3>
+                <span class="arch-machine-role mono">Integration Hub</span>
+              </div>
+            </div>
+            <div class="arch-components">
+              <div class="arch-component gateway">
+                <span class="component-name">Integration Gateway</span>
+                <span class="component-detail mono">Adapter registry · routing</span>
+              </div>
+              <div class="arch-component docker">
+                <span class="component-name">Docker Management</span>
+                <span class="component-detail mono">Container orchestration</span>
+              </div>
+              <div class="arch-component media">
+                <span class="component-name">Media Stack Awareness</span>
+                <span class="component-detail mono">Plex · Sonarr · Radarr</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Flow -->
+        <div class="data-flow reveal">
+          <h3 class="flow-title">Data Flow</h3>
+          <div class="flow-steps">
+            <div class="flow-step">
+              <div class="flow-icon">🎤</div>
+              <span>Wake Word</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="flow-icon">🔊</div>
+              <span>STT</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="flow-icon">🧠</div>
+              <span>LLM</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="flow-icon">🗣</div>
+              <span>TTS</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="flow-icon">🔈</div>
+              <span>Speaker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ VOICE PIPELINE ═══════════════════ -->
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">02</span>
+          <h2 class="section-title">Voice Pipeline Deep Dive</h2>
+          <p class="section-desc">End-to-end voice processing — from wake word to spoken response.</p>
+        </div>
+
+        <div class="pipeline-grid">
+          <div class="pipeline-card glass-card reveal">
+            <div class="pipeline-stage-indicator" style="--stage-color: #a78bfa;">01</div>
+            <h3>OpenWakeWord</h3>
+            <p class="pipeline-role mono">Wake Word Detection</p>
+            <p class="pipeline-desc">Always-on listener using ONNX Runtime. Detects custom wake phrase with configurable sensitivity threshold. Minimal CPU footprint — runs inference on small audio chunks.</p>
+          </div>
+
+          <div class="pipeline-card glass-card reveal">
+            <div class="pipeline-stage-indicator" style="--stage-color: #38bdf8;">02</div>
+            <h3>Whisper</h3>
+            <p class="pipeline-role mono">Speech-to-Text</p>
+            <p class="pipeline-desc">OpenAI Whisper model for accurate transcription. Handles ambient noise, varied speaking speeds, and technical vocabulary. Streams audio chunks for low-latency results.</p>
+          </div>
+
+          <div class="pipeline-card glass-card reveal">
+            <div class="pipeline-stage-indicator" style="--stage-color: #f59e0b;">03</div>
+            <h3>Claude API</h3>
+            <p class="pipeline-role mono">LLM Processing</p>
+            <p class="pipeline-desc">Anthropic Claude with the Remy personality system injected via system prompt. Context-aware — knows about running services, system state, and conversation history.</p>
+          </div>
+
+          <div class="pipeline-card glass-card reveal">
+            <div class="pipeline-stage-indicator" style="--stage-color: #2dd4bf;">04</div>
+            <h3>Kokoro TTS</h3>
+            <p class="pipeline-role mono">Text-to-Speech · am_onyx voice</p>
+            <p class="pipeline-desc">High-quality neural TTS with the am_onyx voice model. Includes a sanitization layer that strips markdown, code fences, and formatting that causes phonemizer issues.</p>
+          </div>
+        </div>
+
+        <!-- Pipeline States -->
+        <div class="states-section reveal">
+          <h3 class="states-title">Pipeline States</h3>
+          <div class="states-grid">
+            <div class="state-card" style="--state-color: #a78bfa;">
+              <div class="state-dot"></div>
+              <span class="state-name mono">IDLE</span>
+              <span class="state-desc">Waiting for wake word. Orb pulses slowly.</span>
+            </div>
+            <div class="state-arrow mono">→</div>
+            <div class="state-card" style="--state-color: #38bdf8;">
+              <div class="state-dot"></div>
+              <span class="state-name mono">LISTENING</span>
+              <span class="state-desc">Recording audio. Orb expands with volume.</span>
+            </div>
+            <div class="state-arrow mono">→</div>
+            <div class="state-card" style="--state-color: #f59e0b;">
+              <div class="state-dot"></div>
+              <span class="state-name mono">PROCESSING</span>
+              <span class="state-desc">STT + LLM inference. Orb spins amber.</span>
+            </div>
+            <div class="state-arrow mono">→</div>
+            <div class="state-card" style="--state-color: #2dd4bf;">
+              <div class="state-dot"></div>
+              <span class="state-name mono">SPEAKING</span>
+              <span class="state-desc">TTS playback. Orb ripples teal.</span>
+            </div>
+            <div class="state-arrow mono">→</div>
+            <div class="state-card state-card-error" style="--state-color: #ef4444;">
+              <div class="state-dot"></div>
+              <span class="state-name mono">ERROR</span>
+              <span class="state-desc">Failure recovery. Orb flashes red.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ THE DASHBOARD ═══════════════════ -->
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">03</span>
+          <h2 class="section-title">The Dashboard</h2>
+          <p class="section-desc">Widget-based UI — every piece of state visible at a glance.</p>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="widget-card glass-card widget-orb reveal">
+            <h3>StatusOrb</h3>
+            <div class="orb-demo">
+              <div class="orb-aura"></div>
+              <div class="orb-glow"></div>
+              <div class="orb-core"></div>
+              <div class="orb-ripple"></div>
+            </div>
+            <p class="widget-desc">Multi-layered animated orb. Four render layers — core, inner glow, aura, and ripple — each responding to pipeline state. Color shifts between violet, blue, amber, teal.</p>
+          </div>
+
+          <div class="widget-card glass-card reveal">
+            <h3>Voice Activity</h3>
+            <div class="widget-preview">
+              <div class="vol-meter">
+                <div class="vol-bar" style="--h: 30%"></div>
+                <div class="vol-bar" style="--h: 65%"></div>
+                <div class="vol-bar" style="--h: 90%"></div>
+                <div class="vol-bar" style="--h: 45%"></div>
+                <div class="vol-bar" style="--h: 70%"></div>
+                <div class="vol-bar" style="--h: 55%"></div>
+                <div class="vol-bar" style="--h: 80%"></div>
+                <div class="vol-bar" style="--h: 35%"></div>
+              </div>
+            </div>
+            <p class="widget-desc">Real-time volume meter, wake word detection events, and live STT transcription preview as words are recognized.</p>
+          </div>
+
+          <div class="widget-card glass-card reveal">
+            <h3>Personality Controls</h3>
+            <div class="widget-preview">
+              <div class="slider-row">
+                <span class="mono slider-label">cajun_freq</span>
+                <div class="slider-track"><div class="slider-fill" style="--fill: 65%"></div></div>
+                <span class="mono slider-val">0.65</span>
+              </div>
+              <div class="slider-row">
+                <span class="mono slider-label">humor</span>
+                <div class="slider-track"><div class="slider-fill" style="--fill: 80%"></div></div>
+                <span class="mono slider-val">0.80</span>
+              </div>
+              <div class="slider-row">
+                <span class="mono slider-label">verbose</span>
+                <div class="slider-track"><div class="slider-fill" style="--fill: 40%"></div></div>
+                <span class="mono slider-val">off</span>
+              </div>
+            </div>
+            <p class="widget-desc">Cajun frequency slider, humor level, verbosity toggle — tune how Remy speaks in real time.</p>
+          </div>
+
+          <div class="widget-card glass-card reveal">
+            <h3>System Status</h3>
+            <div class="widget-preview">
+              <div class="sys-row"><span class="mono">CPU</span><div class="sys-bar"><div class="sys-fill" style="--fill: 34%"></div></div><span class="mono">34%</span></div>
+              <div class="sys-row"><span class="mono">RAM</span><div class="sys-bar"><div class="sys-fill" style="--fill: 62%"></div></div><span class="mono">62%</span></div>
+              <div class="sys-row"><span class="mono">GPU</span><div class="sys-bar"><div class="sys-fill gpu" style="--fill: 15%"></div></div><span class="mono">15%</span></div>
+              <div class="sys-row"><span class="mono">Disk</span><div class="sys-bar"><div class="sys-fill" style="--fill: 48%"></div></div><span class="mono">48%</span></div>
+            </div>
+            <p class="widget-desc">Live system metrics — CPU, RAM, GPU utilization, and disk usage.</p>
+          </div>
+
+          <div class="widget-card glass-card reveal">
+            <h3>Integration Health</h3>
+            <div class="widget-preview">
+              <div class="health-row"><span class="health-dot online"></span><span>Gateway Connection</span></div>
+              <div class="health-row"><span class="health-dot online"></span><span>Media Adapter</span></div>
+              <div class="health-row"><span class="health-dot online"></span><span>Home Adapter</span></div>
+              <div class="health-row"><span class="health-dot warn"></span><span>Voice Runtime</span></div>
+            </div>
+            <p class="widget-desc">Gateway connection status and individual adapter health indicators. Green for connected, amber for degraded.</p>
+          </div>
+
+          <div class="widget-card glass-card reveal">
+            <h3>Recent Conversations</h3>
+            <div class="widget-preview">
+              <div class="convo-row">
+                <span class="convo-time mono">14:32</span>
+                <span class="convo-text">"Hey Gambit, what's playing on Plex?"</span>
+              </div>
+              <div class="convo-row convo-reply">
+                <span class="convo-time mono">14:32</span>
+                <span class="convo-text">"Looks like Arcane Season 2, mon ami. Episode 6."</span>
+              </div>
+              <div class="convo-row">
+                <span class="convo-time mono">14:28</span>
+                <span class="convo-text">"Check the Docker containers."</span>
+              </div>
+            </div>
+            <p class="widget-desc">Scrollable conversation history with timestamps — review what Gambit has been up to.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ PERSONALITY SYSTEM ═══════════════════ -->
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">04</span>
+          <h2 class="section-title">Personality System</h2>
+          <p class="section-desc">Remy LeBeau isn't a gimmick — it's a tunable character engine.</p>
+        </div>
+
+        <div class="personality-layout">
+          <div class="personality-params glass-card reveal">
+            <h3>Tunable Parameters</h3>
+            <div class="param-grid">
+              <div class="param-item">
+                <div class="param-header">
+                  <span class="mono param-name">cajun_frequency</span>
+                  <span class="mono accent-amber">0.65</span>
+                </div>
+                <div class="param-bar"><div class="param-fill amber" style="--fill: 65%"></div></div>
+                <p class="param-desc">How often Cajun French phrases appear. 0 = standard English, 1 = heavy Cajun dialect.</p>
+              </div>
+              <div class="param-item">
+                <div class="param-header">
+                  <span class="mono param-name">humor_level</span>
+                  <span class="mono accent-amber">0.80</span>
+                </div>
+                <div class="param-bar"><div class="param-fill amber" style="--fill: 80%"></div></div>
+                <p class="param-desc">Controls wit density. Low = serious professional, High = playful banter with card metaphors.</p>
+              </div>
+              <div class="param-item">
+                <div class="param-header">
+                  <span class="mono param-name">verbosity</span>
+                  <span class="mono accent-cyan">concise</span>
+                </div>
+                <div class="param-bar"><div class="param-fill cyan" style="--fill: 30%"></div></div>
+                <p class="param-desc">Response length preference. Concise for voice, detailed for complex technical topics.</p>
+              </div>
+              <div class="param-item">
+                <div class="param-header">
+                  <span class="mono param-name">formality</span>
+                  <span class="mono accent-cyan">casual</span>
+                </div>
+                <div class="param-bar"><div class="param-fill cyan" style="--fill: 25%"></div></div>
+                <p class="param-desc">Register control. Casual for daily use, formal when guests or professional context detected.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="personality-preview glass-card reveal">
+            <h3>Generated Behavior Preview</h3>
+            <div class="code-block">
+              <div class="code-header mono">
+                <span class="code-dot green"></span>
+                <span class="code-dot amber"></span>
+                <span class="code-dot red"></span>
+                <span>remy.md — system prompt</span>
+              </div>
+              <pre class="code-content mono"><code>You are Remy — Gambit's voice personality.
+Inspired by Remy LeBeau from X-Men.
+
+Behavioral guidelines (auto-generated):
+- Use Cajun French phrases in ~65% of responses
+  ("mon ami", "cher", "laissez les bons temps rouler")
+- Humor: HIGH — include card/poker metaphors,
+  playful observations, light teasing
+- Keep responses concise for voice delivery
+- Casual register — Drew is a friend, not a boss
+- When discussing tech, stay sharp and precise
+  but wrap it in personality
+
+TTS sanitization rules:
+- Strip markdown bold/italic markers
+- Convert code fences to verbal descriptions
+- Remove URLs (spell out domain if needed)
+- Replace emoji with spoken equivalents</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ TECH STACK ═══════════════════ -->
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">05</span>
+          <h2 class="section-title">Tech Stack</h2>
+          <p class="section-desc">Three languages, two machines, one cohesive system.</p>
+        </div>
+
+        <div class="stack-grid">
+          <div class="stack-card glass-card reveal">
+            <div class="stack-icon">⚡</div>
+            <h3>Frontend</h3>
+            <ul class="stack-list">
+              <li><span class="mono">Electron</span> — desktop shell</li>
+              <li><span class="mono">Svelte 5</span> — reactive UI with runes</li>
+              <li><span class="mono">Tailwind CSS</span> — utility-first styling</li>
+              <li><span class="mono">Vite</span> — build tooling + HMR</li>
+            </ul>
+          </div>
+
+          <div class="stack-card glass-card reveal">
+            <div class="stack-icon">⚙️</div>
+            <h3>Backend</h3>
+            <ul class="stack-list">
+              <li><span class="mono">Go</span> — sidecar process (:9300)</li>
+              <li><span class="mono">Python</span> — voice pipeline runtime</li>
+              <li><span class="mono">WebSocket</span> — real-time bridge</li>
+            </ul>
+          </div>
+
+          <div class="stack-card glass-card reveal">
+            <div class="stack-icon">🧠</div>
+            <h3>AI / ML</h3>
+            <ul class="stack-list">
+              <li><span class="mono">Claude API</span> — LLM reasoning</li>
+              <li><span class="mono">OpenWakeWord</span> — wake detection</li>
+              <li><span class="mono">Whisper</span> — speech-to-text</li>
+              <li><span class="mono">Kokoro TTS</span> — neural voice synthesis</li>
+              <li><span class="mono">ONNX Runtime</span> — model inference</li>
+            </ul>
+          </div>
+
+          <div class="stack-card glass-card reveal">
+            <div class="stack-icon">🧪</div>
+            <h3>Testing</h3>
+            <ul class="stack-list">
+              <li><span class="mono">330</span> voice pipeline tests</li>
+              <li><span class="mono">104</span> gateway integration tests</li>
+              <li><span class="mono">21</span> Go sidecar tests</li>
+              <li><span class="mono accent-cyan">455 total</span> — all passing</li>
+            </ul>
+          </div>
+
+          <div class="stack-card glass-card reveal">
+            <div class="stack-icon">🏗</div>
+            <h3>Infrastructure</h3>
+            <ul class="stack-list">
+              <li><span class="mono">Docker</span> — containerized services</li>
+              <li><span class="mono">systemd</span> — process management</li>
+              <li><span class="mono">Tailscale</span> — mesh networking</li>
+              <li><span class="mono">SSE push</span> — event streaming</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ BY THE NUMBERS ═══════════════════ -->
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">06</span>
+          <h2 class="section-title">By the Numbers</h2>
+          <p class="section-desc">Hard metrics from a solo-built system.</p>
+        </div>
+
+        <div class="numbers-grid">
+          <div class="number-card glass-card reveal">
+            <span class="number-value accent-cyan">100+</span>
+            <span class="number-label">PRs Merged</span>
+          </div>
+          <div class="number-card glass-card reveal">
+            <span class="number-value accent-amber">455</span>
+            <span class="number-label">Tests Passing</span>
+          </div>
+          <div class="number-card glass-card reveal">
+            <span class="number-value accent-cyan">3</span>
+            <span class="number-label">Languages</span>
+            <span class="number-detail mono">Go · Python · TS/Svelte</span>
+          </div>
+          <div class="number-card glass-card reveal">
+            <span class="number-value accent-amber">6</span>
+            <span class="number-label">Gap Analysis Cycles</span>
+          </div>
+          <div class="number-card glass-card reveal">
+            <span class="number-value accent-cyan">5</span>
+            <span class="number-label">Pipeline States</span>
+          </div>
+          <div class="number-card glass-card reveal">
+            <span class="number-value accent-amber">1</span>
+            <span class="number-label">Solo Developer</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ─── HERO ─── */
+  .hero-section {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 1.5rem 4rem;
+    position: relative;
+  }
+
+  .hero-container {
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--accent-cyan);
+    background: rgba(56, 189, 248, 0.06);
+    margin-bottom: 2rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--text-primary);
+    margin: 0 0 1.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0 0 2rem;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .tag {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    background: var(--bg-card);
+  }
+
+  .accent-cyan { color: var(--accent-cyan); }
+  .accent-amber { color: var(--accent-amber); }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-header {
+    position: relative;
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.75rem;
+  }
+
+  .section-desc {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 600px;
+  }
+
+  /* ─── ARCHITECTURE ─── */
+  .arch-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .arch-grid {
+      grid-template-columns: 1fr;
+    }
+    .arch-connection {
+      flex-direction: row !important;
+    }
+  }
+
+  .arch-machine {
+    padding: 1.75rem;
+  }
+
+  .arch-machine-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .machine-icon {
+    font-size: 1.75rem;
+  }
+
+  .arch-machine-name {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .arch-machine-role {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .arch-components {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .arch-component {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--border-subtle);
+  }
+
+  .arch-component.electron { border-left-color: var(--accent-cyan); }
+  .arch-component.go { border-left-color: #00ADD8; }
+  .arch-component.python { border-left-color: #3776AB; }
+  .arch-component.gateway { border-left-color: var(--accent-amber); }
+  .arch-component.docker { border-left-color: #2496ED; }
+  .arch-component.media { border-left-color: #E5A00D; }
+
+  .component-name {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+  }
+
+  .component-detail {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+
+  .arch-connection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+
+  .arch-line {
+    width: 2px;
+    height: 2rem;
+    background: linear-gradient(180deg, transparent, var(--accent-cyan), transparent);
+  }
+
+  .arch-protocol {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 768px) {
+    .arch-protocol {
+      writing-mode: horizontal-tb;
+    }
+    .arch-line {
+      width: 2rem;
+      height: 2px;
+    }
+  }
+
+  /* ─── DATA FLOW ─── */
+  .data-flow {
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-card);
+  }
+
+  .flow-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin: 0 0 1.5rem;
+    text-align: center;
+  }
+
+  .flow-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+    background: rgba(56, 189, 248, 0.04);
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+  }
+
+  .flow-icon {
+    font-size: 1.5rem;
+  }
+
+  .flow-arrow {
+    color: var(--accent-cyan);
+    font-size: 1.2rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+
+  /* ─── PIPELINE CARDS ─── */
+  .pipeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .pipeline-card {
+    padding: 1.75rem;
+    position: relative;
+  }
+
+  .pipeline-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem;
+  }
+
+  .pipeline-role {
+    font-size: 0.75rem;
+    color: var(--accent-cyan);
+    margin: 0 0 1rem;
+  }
+
+  .pipeline-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .pipeline-stage-indicator {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--stage-color);
+    opacity: 0.7;
+  }
+
+  /* ─── PIPELINE STATES ─── */
+  .states-section {
+    margin-top: 1rem;
+  }
+
+  .states-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin: 0 0 1.5rem;
+  }
+
+  .states-grid {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .state-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-card);
+    text-align: center;
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .state-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--state-color);
+    box-shadow: 0 0 12px var(--state-color);
+    animation: statePulse 2s ease-in-out infinite;
+  }
+
+  @keyframes statePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
+  }
+
+  .state-name {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--state-color);
+  }
+
+  .state-desc {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .state-arrow {
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .states-grid {
+      flex-direction: column;
+    }
+    .state-arrow {
+      transform: rotate(90deg);
+    }
+  }
+
+  /* ─── DASHBOARD WIDGETS ─── */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .widget-card {
+    padding: 1.5rem;
+  }
+
+  .widget-card h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+  }
+
+  .widget-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin: 1rem 0 0;
+  }
+
+  .widget-preview {
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-subtle);
+  }
+
+  /* Orb */
+  .widget-orb {
+    grid-column: span 1;
+  }
+
+  .orb-demo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 0.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .orb-core {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #a78bfa, #7c3aed);
+    z-index: 3;
+    position: relative;
+    animation: orbCorePulse 3s ease-in-out infinite;
+  }
+
+  .orb-glow {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(167, 139, 250, 0.4), transparent);
+    z-index: 2;
+    animation: orbGlowPulse 3s ease-in-out infinite;
+  }
+
+  .orb-aura {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(167, 139, 250, 0.12), transparent);
+    z-index: 1;
+    animation: orbAuraPulse 4s ease-in-out infinite;
+  }
+
+  .orb-ripple {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid rgba(167, 139, 250, 0.2);
+    z-index: 0;
+    animation: orbRipple 3s ease-out infinite;
+  }
+
+  @keyframes orbCorePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  @keyframes orbGlowPulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.15); opacity: 1; }
+  }
+
+  @keyframes orbAuraPulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+  }
+
+  @keyframes orbRipple {
+    0% { transform: scale(0.8); opacity: 0.6; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+
+  /* Volume Meter */
+  .vol-meter {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+    height: 48px;
+  }
+
+  .vol-bar {
+    width: 6px;
+    height: var(--h);
+    background: linear-gradient(to top, var(--accent-cyan), #a78bfa);
+    border-radius: 3px;
+    animation: volBounce 1.2s ease-in-out infinite alternate;
+  }
+
+  .vol-bar:nth-child(2) { animation-delay: 0.1s; }
+  .vol-bar:nth-child(3) { animation-delay: 0.2s; }
+  .vol-bar:nth-child(4) { animation-delay: 0.3s; }
+  .vol-bar:nth-child(5) { animation-delay: 0.15s; }
+  .vol-bar:nth-child(6) { animation-delay: 0.25s; }
+  .vol-bar:nth-child(7) { animation-delay: 0.05s; }
+  .vol-bar:nth-child(8) { animation-delay: 0.35s; }
+
+  @keyframes volBounce {
+    0% { transform: scaleY(0.6); }
+    100% { transform: scaleY(1.1); }
+  }
+
+  /* Sliders */
+  .slider-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .slider-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .slider-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    min-width: 70px;
+  }
+
+  .slider-track {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .slider-fill {
+    height: 100%;
+    width: var(--fill);
+    background: var(--accent-amber);
+    border-radius: 2px;
+  }
+
+  .slider-val {
+    font-size: 0.65rem;
+    color: var(--accent-amber);
+    min-width: 28px;
+    text-align: right;
+  }
+
+  /* System Status */
+  .sys-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+  }
+
+  .sys-row:last-child { margin-bottom: 0; }
+
+  .sys-row > span:first-child {
+    min-width: 32px;
+    color: var(--text-muted);
+  }
+
+  .sys-row > span:last-child {
+    min-width: 28px;
+    text-align: right;
+    color: var(--accent-cyan);
+  }
+
+  .sys-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .sys-fill {
+    height: 100%;
+    width: var(--fill);
+    background: var(--accent-cyan);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  .sys-fill.gpu {
+    background: var(--accent-amber);
+  }
+
+  /* Health */
+  .health-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  .health-row:last-child { margin-bottom: 0; }
+
+  .health-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .health-dot.online {
+    background: #22c55e;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+  }
+
+  .health-dot.warn {
+    background: var(--accent-amber);
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+  }
+
+  /* Conversations */
+  .convo-row {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.78rem;
+  }
+
+  .convo-row:last-child { margin-bottom: 0; }
+
+  .convo-time {
+    color: var(--text-muted);
+    font-size: 0.65rem;
+    min-width: 32px;
+    padding-top: 2px;
+  }
+
+  .convo-text {
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .convo-reply .convo-text {
+    color: var(--accent-amber);
+    font-style: italic;
+  }
+
+  /* ─── PERSONALITY ─── */
+  .personality-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .personality-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .personality-params, .personality-preview {
+    padding: 1.75rem;
+  }
+
+  .personality-params h3, .personality-preview h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 1.25rem;
+  }
+
+  .param-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .param-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .param-name {
+    font-size: 0.8rem;
+    color: var(--text-primary);
+  }
+
+  .param-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+
+  .param-fill {
+    height: 100%;
+    width: var(--fill);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  .param-fill.amber { background: var(--accent-amber); }
+  .param-fill.cyan { background: var(--accent-cyan); }
+
+  .param-desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Code Block */
+  .code-block {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .code-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .code-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .code-dot.green { background: #22c55e; }
+  .code-dot.amber { background: #f59e0b; }
+  .code-dot.red { background: #ef4444; }
+
+  .code-content {
+    padding: 1rem;
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+    overflow-x: auto;
+    white-space: pre-wrap;
+  }
+
+  /* ─── TECH STACK ─── */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .stack-card {
+    padding: 1.5rem;
+  }
+
+  .stack-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .stack-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+  }
+
+  .stack-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .stack-list li {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .stack-list li .mono {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  /* ─── BY THE NUMBERS ─── */
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .number-card {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .number-value {
+    font-family: var(--font-display);
+    font-size: 2.75rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .number-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .number-detail {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>

@@ -29,12 +29,18 @@ export interface PriorRole {
   bullets: string[];
 }
 
+export const headline = {
+  tagline: 'I build systems that make you say "wait, one person built this?"',
+  subtitle: 'Staff Platform Engineer by day. AI architects, game engines, and real-time video pipelines by night.',
+  pitch: 'I\'m a Staff Platform Engineer who ships production infrastructure at scale — and then goes home and builds JARVIS, game engines, and real-time AI video pipelines for fun. The hobby projects aren\'t a distraction. They\'re why I can debug a kernel panic, reason about GPU memory, and design systems that don\'t fall over at 3am.',
+};
+
 export const abridgeRole = {
   company: 'Abridge AI, Inc.',
   title: 'Staff Platform Engineer',
   period: 'Feb 2023 – Present',
   location: 'Greenville, SC (Remote)',
-  summary: 'Day 1 platform hire at a healthcare AI company building ambient clinical documentation. Founded and grew the Platform Engineering organization, established the infrastructure and developer experience that scaled the product from a proof of concept to full production scaling to over 250 healthcare systems.',
+  summary: 'Day 1 platform hire at a healthcare AI company building ambient clinical documentation. Founded and grew the Platform Engineering organization, established the infrastructure and developer experience that scaled the product from a proof of concept to full production across over 250 healthcare systems. Capstone achievement: solo-built the Builders Portal — an Internal Developer Platform (Go/Fiber + React/Vite) that replaced manual Terraform workflows with self-service infrastructure for all of engineering, with 187 merged PRs in ~4 months and 102 MCP tools for AI agent integration.',
 };
 
 export const buildersPortal = {
